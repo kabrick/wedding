@@ -1,0 +1,86 @@
+<section class="gallery-hero">
+  <div class="container">
+    <h1>Our Memories</h1>
+    <p class="subtitle">A collection of our favorite moments together</p>
+  </div>
+</section>
+
+<section class="gallery-filters">
+  <div class="container">
+    <div class="filter-buttons">
+      <button 
+        class="filter-btn" 
+        [class.active]="activeFilter === 'all'"
+        (click)="setFilter('all')">
+        All Photos
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="activeFilter === 'engagement'"
+        (click)="setFilter('engagement')">
+        Engagement
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="activeFilter === 'travel'"
+        (click)="setFilter('travel')">
+        Travel
+      </button>
+      <button 
+        class="filter-btn"
+        [class.active]="activeFilter === 'everyday'"
+        (click)="setFilter('everyday')">
+        Everyday
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="photo-gallery">
+  <div class="container">
+    <div class="gallery-grid">
+      <div 
+        *ngFor="let photo of filteredPhotos" 
+        class="gallery-item"
+        (click)="openLightbox(photo)">
+        <div class="photo-placeholder" [attr.data-category]="photo.category">
+          <div class="photo-overlay">
+            <h4>{{ photo.title }}</h4>
+            <p>{{ photo.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="save-the-date">
+  <div class="container">
+    <h2>Save Our Wedding Date</h2>
+    <p>Add our wedding to your calendar so you don't miss our special day!</p>
+    <div class="calendar-buttons">
+      <button class="btn calendar-btn" (click)="addToCalendar('google')">
+        📅 Google Calendar
+      </button>
+      <button class="btn calendar-btn" (click)="addToCalendar('outlook')">
+        📅 Outlook
+      </button>
+      <button class="btn calendar-btn" (click)="addToCalendar('apple')">
+        📅 Apple Calendar
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" *ngIf="selectedPhoto" (click)="closeLightbox()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeLightbox()">&times;</button>
+    <div class="lightbox-photo" [attr.data-category]="selectedPhoto.category"></div>
+    <div class="lightbox-info">
+      <h3>{{ selectedPhoto.title }}</h3>
+      <p>{{ selectedPhoto.description }}</p>
+      <span class="photo-date">{{ selectedPhoto.date }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,208 @@
+<section class="rsvp-hero">
+  <div class="container">
+    <h1>RSVP</h1>
+    <p class="subtitle">Please let us know if you can join us for our special day</p>
+  </div>
+</section>
+
+<section class="rsvp-form-section">
+  <div class="container">
+    <div class="rsvp-card">
+      <h2>We Hope You Can Join Us!</h2>
+      <p>Your presence would make our wedding day complete. Please respond by July 1st, 2025.</p>
+      
+      <form class="rsvp-form" (ngSubmit)="onSubmit()" #rsvpForm="ngForm">
+        <!-- Guest Information -->
+        <div class="form-group">
+          <label for="guestName">Your Name *</label>
+          <input 
+            type="text" 
+            id="guestName" 
+            name="guestName"
+            [(ngModel)]="formData.guestName" 
+            required 
+            class="form-control"
+            placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            [(ngModel)]="formData.email" 
+            required 
+            class="form-control"
+            placeholder="your.email@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone"
+            [(ngModel)]="formData.phone" 
+            class="form-control"
+            placeholder="(555) 123-4567">
+        </div>
+
+        <!-- Attendance -->
+        <div class="form-group">
+          <label class="attendance-label">Will you be attending? *</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input 
+                type="radio" 
+                name="attending" 
+                value="yes"
+                [(ngModel)]="formData.attending" 
+                required>
+              <span class="radio-custom"></span>
+              <span class="radio-text">✨ Joyfully Accept</span>
+            </label>
+            <label class="radio-option">
+              <input 
+                type="radio" 
+                name="attending" 
+                value="no"
+                [(ngModel)]="formData.attending" 
+                required>
+              <span class="radio-custom"></span>
+              <span class="radio-text">😢 Regretfully Decline</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Guest Count (only show if attending) -->
+        <div class="form-group" *ngIf="formData.attending === 'yes'">
+          <label for="guestCount">Number of Guests *</label>
+          <select 
+            id="guestCount" 
+            name="guestCount"
+            [(ngModel)]="formData.guestCount" 
+            class="form-control"
+            [required]="formData.attending === 'yes'">
+            <option value="">Select number of guests</option>
+            <option value="1">Just me</option>
+            <option value="2">2 guests (me + 1)</option>
+            <option value="3">3 guests (me + 2)</option>
+            <option value="4">4 guests (me + 3)</option>
+          </select>
+        </div>
+
+        <!-- Guest Names (only show if attending and more than 1 guest) -->
+        <div class="form-group" *ngIf="formData.attending === 'yes' && parseInt(formData.guestCount) > 1">
+          <label for="additionalGuests">Names of Additional Guests</label>
+          <textarea 
+            id="additionalGuests" 
+            name="additionalGuests"
+            [(ngModel)]="formData.additionalGuests" 
+            class="form-control"
+            rows="3"
+            placeholder="Please list the names of your additional guests">
+          </textarea>
+        </div>
+
+        <!-- Dietary Restrictions -->
+        <div class="form-group" *ngIf="formData.attending === 'yes'">
+          <label for="dietaryRestrictions">Dietary Restrictions or Food Allergies</label>
+          <textarea 
+            id="dietaryRestrictions" 
+            name="dietaryRestrictions"
+            [(ngModel)]="formData.dietaryRestrictions" 
+            class="form-control"
+            rows="3"
+            placeholder="Please let us know about any dietary restrictions, allergies, or special meal requests">
+          </textarea>
+        </div>
+
+        <!-- Song Request -->
+        <div class="form-group" *ngIf="formData.attending === 'yes'">
+          <label for="songRequest">Song Request 🎵</label>
+          <input 
+            type="text" 
+            id="songRequest" 
+            name="songRequest"
+            [(ngModel)]="formData.songRequest" 
+            class="form-control"
+            placeholder="Any song you'd love to hear at our reception?">
+        </div>
+
+        <!-- Special Message -->
+        <div class="form-group">
+          <label for="message">Special Message for the Happy Couple 💕</label>
+          <textarea 
+            id="message" 
+            name="message"
+            [(ngModel)]="formData.message" 
+            class="form-control"
+            rows="4"
+            placeholder="Share your well wishes, favorite memory, or anything you'd like to tell us!">
+          </textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="btn rsvp-btn"
+            [disabled]="!rsvpForm.form.valid || isSubmitting">
+            <span *ngIf="isSubmitting">Sending...</span>
+            <span *ngIf="!isSubmitting">Send RSVP</span>
+          </button>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" *ngIf="showSuccessMessage">
+          <div class="success-icon">✅</div>
+          <h3>Thank You!</h3>
+          <p>Your RSVP has been received. We can't wait to celebrate with you!</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="wedding-details">
+  <div class="container">
+    <h2>Wedding Details</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon">📅</div>
+        <h3>When</h3>
+        <p>Saturday, August 15th, 2025</p>
+        <p>Ceremony: 3:00 PM</p>
+        <p>Reception: 5:00 PM</p>
+      </div>
+      
+      <div class="detail-card">
+        <div class="detail-icon">📍</div>
+        <h3>Where</h3>
+        <p>Beautiful Garden Venue</p>
+        <p>123 Wedding Lane</p>
+        <p>City, State 12345</p>
+        <a href="https://maps.google.com" target="_blank" class="map-link">View on Map</a>
+      </div>
+      
+      <div class="detail-card">
+        <div class="detail-icon">👗</div>
+        <h3>Dress Code</h3>
+        <p>Cocktail Attire</p>
+        <p>We suggest garden party elegant - think florals, pastels, and comfortable shoes for outdoor festivities.</p>
+      </div>
+      
+      <div class="detail-card">
+        <div class="detail-icon">🎁</div>
+        <h3>Registry</h3>
+        <p>Your presence is the greatest gift!</p>
+        <p>If you'd like to celebrate with a gift, we're registered at:</p>
+        <div class="registry-links">
+          <a href="#" class="registry-link">Target</a>
+          <a href="#" class="registry-link">Amazon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

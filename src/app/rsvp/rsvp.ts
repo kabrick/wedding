@@ -1,0 +1,73 @@
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+interface RSVPFormData {
+  guestName: string;
+  email: string;
+  phone: string;
+  attending: string;
+  guestCount: string;
+  additionalGuests: string;
+  dietaryRestrictions: string;
+  songRequest: string;
+  message: string;
+}
+
+@Component({
+  selector: 'app-rsvp',
+  imports: [FormsModule, CommonModule],
+  templateUrl: './rsvp.html',
+  styleUrl: './rsvp.scss'
+})
+export class Rsvp {
+  isSubmitting = false;
+  showSuccessMessage = false;
+
+  formData: RSVPFormData = {
+    guestName: '',
+    email: '',
+    phone: '',
+    attending: '',
+    guestCount: '',
+    additionalGuests: '',
+    dietaryRestrictions: '',
+    songRequest: '',
+    message: ''
+  };
+
+  parseInt = parseInt; // Make parseInt available in template
+
+  onSubmit(): void {
+    if (this.isSubmitting) return;
+    
+    this.isSubmitting = true;
+    
+    // Simulate form submission
+    setTimeout(() => {
+      console.log('RSVP Form Data:', this.formData);
+      this.isSubmitting = false;
+      this.showSuccessMessage = true;
+      
+      // Hide success message after 5 seconds and reset form
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+        this.resetForm();
+      }, 5000);
+    }, 2000);
+  }
+
+  private resetForm(): void {
+    this.formData = {
+      guestName: '',
+      email: '',
+      phone: '',
+      attending: '',
+      guestCount: '',
+      additionalGuests: '',
+      dietaryRestrictions: '',
+      songRequest: '',
+      message: ''
+    };
+  }
+}

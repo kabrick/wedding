@@ -1,0 +1,293 @@
+.hero {
+  background: linear-gradient(rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.05)), 
+              linear-gradient(135deg, var(--cream) 0%, #f5f1e8 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><defs><pattern id="grain" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.5" fill="%23d4af37" opacity="0.03"/><circle cx="15" cy="45" r="0.3" fill="%23d4af37" opacity="0.02"/><circle cx="45" cy="15" r="0.4" fill="%23d4af37" opacity="0.03"/></pattern></defs><rect width="60" height="60" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+/* Left Side - Names and Quote (62.5% width) */
+.hero-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.names-section {
+  text-align: center;
+  max-width: 600px;
+}
+
+.couple-names {
+  font-size: 5.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 2rem;
+  font-family: var(--font-elegant), var(--font-script), cursive;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  line-height: 1.1;
+  letter-spacing: 2px;
+}
+
+.love-quote {
+  margin-top: 3rem;
+}
+
+.quote-text {
+  font-size: 1.4rem;
+  color: var(--dark-text);
+  font-family: var(--font-body), serif;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.quote-author {
+  font-size: 1rem;
+  color: var(--light-text);
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Right Side - Wedding Details (37.5% width) */
+.hero-right {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.wedding-info {
+  text-align: center;
+}
+
+.date-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cream);
+}
+
+.wedding-date {
+  font-size: 1.8rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.venue {
+  font-size: 1.1rem;
+  color: var(--light-text);
+  font-family: var(--font-body), serif;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.countdown-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--cream);
+}
+
+.countdown-section h3 {
+  font-size: 1.3rem;
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.countdown-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.time-unit {
+  background: var(--cream);
+  padding: 1rem 0.5rem;
+  border-radius: 12px;
+  min-width: 65px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.time-unit .number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-gold);
+  margin-bottom: 0.3rem;
+  font-family: var(--font-serif), serif;
+  min-height: 2.2rem;
+  line-height: 1;
+}
+
+.time-unit .label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--light-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--font-body), serif;
+  font-weight: 500;
+}
+
+.action-section {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 18px 40px;
+  background: var(--primary-gold);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  font-family: var(--font-body), serif;
+  font-size: 1rem;
+}
+
+.cta-button:hover {
+  background: var(--secondary-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+@media (max-width: 1200px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .couple-names {
+    font-size: 4.5rem;
+  }
+  
+  .hero-right {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+  
+  .hero-container {
+    padding: 1rem;
+    gap: 2rem;
+  }
+  
+  .couple-names {
+    font-size: 3.5rem;
+  }
+  
+  .quote-text {
+    font-size: 1.2rem;
+  }
+  
+  .hero-right {
+    padding: 2rem 1.5rem;
+  }
+  
+  .wedding-date {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-display {
+    gap: 0.5rem;
+  }
+  
+  .time-unit {
+    padding: 0.75rem 0.5rem;
+    min-width: 55px;
+  }
+  
+  .time-unit .number {
+    font-size: 1.4rem;
+  }
+  
+  .time-unit .label {
+    font-size: 0.65rem;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .couple-names {
+    font-size: 2.8rem;
+  }
+  
+  .quote-text {
+    font-size: 1.1rem;
+  }
+  
+  .countdown-display {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .time-unit {
+    min-width: 50px;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .time-unit .number {
+    font-size: 1.2rem;
+  }
+  
+  .time-unit .label {
+    font-size: 0.6rem;
+  }
+}

@@ -1,0 +1,50 @@
+<section class="hero">
+  <div class="hero-container">
+    <!-- Left side - Names and Quote (2.5/4) -->
+    <div class="hero-left">
+      <div class="names-section">
+        <h1 class="couple-names">Mitch & Douglas</h1>
+        <div class="love-quote">
+          <p class="quote-text">"Two souls with but a single thought, two hearts that beat as one."</p>
+          <p class="quote-author">— John Keats</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side - Wedding Details (1.5/4) -->
+    <div class="hero-right">
+      <div class="wedding-info">
+        <div class="date-section">
+          <p class="wedding-date">August 15, 2025</p>
+          <p class="venue">Beautiful Garden Venue, City</p>
+        </div>
+
+        <div class="countdown-section">
+          <h3>Countdown</h3>
+          <div class="countdown-display">
+            <div class="time-unit">
+              <span class="number">{{ timeRemaining.days }}</span>
+              <span class="label">Days</span>
+            </div>
+            <div class="time-unit">
+              <span class="number">{{ timeRemaining.hours }}</span>
+              <span class="label">Hours</span>
+            </div>
+            <div class="time-unit">
+              <span class="number">{{ timeRemaining.minutes }}</span>
+              <span class="label">Minutes</span>
+            </div>
+            <div class="time-unit">
+              <span class="number">{{ timeRemaining.seconds }}</span>
+              <span class="label">Seconds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-section">
+          <a routerLink="/rsvp" class="cta-button">RSVP Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
