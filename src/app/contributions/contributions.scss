@@ -1,0 +1,413 @@
+.contributions-hero {
+  background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+  color: var(--white);
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+}
+
+.contributions-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-script), cursive;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: var(--font-body), serif;
+  font-style: italic;
+}
+
+.contribution-info {
+  background: var(--white);
+  padding: 4rem 2rem;
+}
+
+.info-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.info-content h2 {
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  margin-bottom: 2rem;
+  font-family: var(--font-serif), serif;
+}
+
+.info-content p {
+  font-size: 1.2rem;
+  color: var(--dark-text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body), serif;
+}
+
+.contribution-options {
+  background: var(--cream);
+  padding: 6rem 2rem;
+}
+
+.contribution-options h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  margin-bottom: 4rem;
+  font-family: var(--font-serif), serif;
+}
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.payment-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.2);
+  border-color: var(--primary-gold);
+}
+
+.payment-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+}
+
+.payment-icon.venmo {
+  background: linear-gradient(135deg, #3d95ce, #1a73e8);
+}
+
+.payment-icon.paypal {
+  background: linear-gradient(135deg, #0070ba, #003087);
+}
+
+.payment-icon.zelle {
+  background: linear-gradient(135deg, #6d1ed4, #a855f7);
+}
+
+.payment-icon.cashapp {
+  background: linear-gradient(135deg, #00d632, #00a32e);
+}
+
+.payment-icon.traditional {
+  background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+}
+
+.payment-icon.registry {
+  background: linear-gradient(135deg, #e11d48, #dc2626);
+}
+
+.payment-icon .icon {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.payment-card h3 {
+  font-size: 1.5rem;
+  color: var(--dark-text);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+}
+
+.payment-username {
+  font-size: 1.1rem;
+  color: var(--primary-gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body), serif;
+}
+
+.payment-description {
+  font-size: 0.95rem;
+  color: var(--light-text);
+  margin-bottom: 2rem;
+  font-family: var(--font-body), serif;
+}
+
+.payment-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-body), serif;
+  color: var(--white);
+  background: var(--primary-gold);
+}
+
+.payment-btn:hover {
+  background: var(--secondary-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.contribution-goals {
+  background: var(--white);
+  padding: 6rem 2rem;
+}
+
+.contribution-goals h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  margin-bottom: 4rem;
+  font-family: var(--font-serif), serif;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.goal-item {
+  background: var(--cream);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.goal-item:hover {
+  transform: translateY(-3px);
+}
+
+.goal-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.goal-item h3 {
+  font-size: 1.3rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+  font-family: var(--font-serif), serif;
+}
+
+.goal-item p {
+  color: var(--dark-text);
+  line-height: 1.6;
+  font-family: var(--font-body), serif;
+}
+
+.thank-you-section {
+  background: linear-gradient(135deg, var(--cream) 0%, #f5f1e8 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.thank-you-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.thank-you-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary-gold);
+  margin-bottom: 2rem;
+  font-family: var(--font-script), cursive;
+}
+
+.thank-you-section p {
+  font-size: 1.2rem;
+  color: var(--dark-text);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  font-family: var(--font-body), serif;
+}
+
+.signature {
+  margin-top: 3rem;
+}
+
+.couple-signature {
+  font-size: 1.1rem;
+  color: var(--dark-text);
+  font-family: var(--font-body), serif;
+  font-style: italic;
+}
+
+.couple-signature .names {
+  font-size: 1.5rem;
+  color: var(--primary-gold);
+  font-family: var(--font-script), cursive;
+  font-weight: 500;
+  font-style: normal;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Payment Modal */
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--light-text);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: var(--cream);
+  color: var(--dark-text);
+}
+
+.payment-details {
+  text-align: center;
+}
+
+.payment-details h3 {
+  font-size: 1.8rem;
+  color: var(--primary-gold);
+  margin-bottom: 2rem;
+  font-family: var(--font-serif), serif;
+}
+
+.payment-details p {
+  margin-bottom: 1rem;
+  color: var(--dark-text);
+  line-height: 1.6;
+  font-family: var(--font-body), serif;
+}
+
+.qr-placeholder {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+  border: 2px dashed var(--primary-gold);
+}
+
+.qr-placeholder p {
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+.qr-placeholder p:first-child {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.external-link {
+  display: inline-block;
+  padding: 12px 25px;
+  background: var(--primary-gold);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 25px;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.external-link:hover {
+  background: var(--secondary-gold);
+  transform: translateY(-2px);
+}
+
+.registry-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .contributions-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .payment-methods {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .payment-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .goals-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .modal-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .registry-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}

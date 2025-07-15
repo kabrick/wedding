@@ -1,0 +1,238 @@
+<section class="contributions-hero">
+  <div class="container">
+    <h1>Wedding Contributions</h1>
+    <p class="subtitle">Help us celebrate by contributing to our dream wedding</p>
+  </div>
+</section>
+
+<section class="contribution-info">
+  <div class="container">
+    <div class="info-content">
+      <h2>Your Support Means Everything</h2>
+      <p>
+        Planning our dream wedding has been an incredible journey, and we're so grateful for the love and support 
+        from our family and friends. If you'd like to contribute to making our special day even more magical, 
+        we've set up a few easy ways for you to help.
+      </p>
+      <p>
+        Every contribution, no matter the size, goes directly toward creating the perfect celebration where 
+        we can dance, laugh, and make unforgettable memories with all of you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contribution-options">
+  <div class="container">
+    <h2>Ways to Contribute</h2>
+    
+    <div class="payment-methods">
+      <!-- Venmo -->
+      <div class="payment-card">
+        <div class="payment-icon venmo">
+          <span class="icon">📱</span>
+        </div>
+        <h3>Venmo</h3>
+        <p class="payment-username">john-jane-wedding</p>
+        <p class="payment-description">Quick and easy mobile payments</p>
+        <button class="payment-btn venmo-btn" (click)="openPaymentMethod('venmo')">
+          Send via Venmo
+        </button>
+      </div>
+
+      <!-- PayPal -->
+      <div class="payment-card">
+        <div class="payment-icon paypal">
+          <span class="icon">💳</span>
+        </div>
+        <h3>PayPal</h3>
+        <p class="payment-username">weddingjohnandjane.com</p>
+        <p class="payment-description">Secure payments worldwide</p>
+        <button class="payment-btn paypal-btn" (click)="openPaymentMethod('paypal')">
+          Send via PayPal
+        </button>
+      </div>
+
+      <!-- Zelle -->
+      <div class="payment-card">
+        <div class="payment-icon zelle">
+          <span class="icon">🏦</span>
+        </div>
+        <h3>Zelle</h3>
+        <p class="payment-username">555-WEDDING (555-933-3464)</p>
+        <p class="payment-description">Direct bank transfers</p>
+        <button class="payment-btn zelle-btn" (click)="openPaymentMethod('zelle')">
+          Send via Zelle
+        </button>
+      </div>
+
+      <!-- Cash App -->
+      <div class="payment-card">
+        <div class="payment-icon cashapp">
+          <span class="icon">💸</span>
+        </div>
+        <h3>Cash App</h3>
+        <p class="payment-username">$JohnJaneWedding</p>
+        <p class="payment-description">Simple cash transfers</p>
+        <button class="payment-btn cashapp-btn" (click)="openPaymentMethod('cashapp')">
+          Send via Cash App
+        </button>
+      </div>
+
+      <!-- Traditional Gift -->
+      <div class="payment-card">
+        <div class="payment-icon traditional">
+          <span class="icon">🎁</span>
+        </div>
+        <h3>Traditional Gift</h3>
+        <p class="payment-username">Bring to wedding day</p>
+        <p class="payment-description">Cash or check at the reception</p>
+        <button class="payment-btn traditional-btn" (click)="openPaymentMethod('traditional')">
+          Learn More
+        </button>
+      </div>
+
+      <!-- Wedding Registry -->
+      <div class="payment-card">
+        <div class="payment-icon registry">
+          <span class="icon">🛍️</span>
+        </div>
+        <h3>Wedding Registry</h3>
+        <p class="payment-username">Target & Amazon</p>
+        <p class="payment-description">Choose from our wishlist</p>
+        <button class="payment-btn registry-btn" (click)="openPaymentMethod('registry')">
+          View Registry
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contribution-goals">
+  <div class="container">
+    <h2>What Your Contributions Help With</h2>
+    <div class="goals-grid">
+      <div class="goal-item">
+        <div class="goal-icon">🎵</div>
+        <h3>Music & Entertainment</h3>
+        <p>Live band, DJ, and special performances to keep the celebration going all night</p>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-icon">🍰</div>
+        <h3>Catering & Cake</h3>
+        <p>Delicious food, wedding cake, and beverages for all our guests</p>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-icon">💐</div>
+        <h3>Flowers & Decorations</h3>
+        <p>Beautiful floral arrangements and decorations to make the venue magical</p>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-icon">📸</div>
+        <h3>Photography & Video</h3>
+        <p>Professional photography and videography to capture every precious moment</p>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-icon">🌙</div>
+        <h3>Honeymoon Fund</h3>
+        <p>Help us create amazing memories on our romantic honeymoon adventure</p>
+      </div>
+      
+      <div class="goal-item">
+        <div class="goal-icon">✨</div>
+        <h3>Special Touches</h3>
+        <p>Extra special details that will make our wedding day truly unforgettable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="thank-you-section">
+  <div class="container">
+    <div class="thank-you-content">
+      <h2>Thank You!</h2>
+      <p>
+        Your love, support, and presence at our wedding means more to us than any gift ever could. 
+        We're so grateful to have such wonderful people in our lives, and we can't wait to celebrate 
+        with you on our special day!
+      </p>
+      <div class="signature">
+        <p class="couple-signature">With love and gratitude,<br><span class="names">Mitch & Douglas</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Method Modal -->
+@if (selectedPaymentMethod) {
+  <div class="payment-modal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+      
+      @if (selectedPaymentMethod === 'venmo') {
+        <div class="payment-details">
+          <h3>Venmo Payment</h3>
+          <div class="qr-placeholder">
+            <p>📱 QR Code Placeholder</p>
+            <p>Scan to pay via Venmo</p>
+          </div>
+          <p><strong>Username:</strong> john-jane-wedding</p>
+          <p>Open your Venmo app and send payment to our username above</p>
+        </div>
+      }
+
+      @if (selectedPaymentMethod === 'paypal') {
+        <div class="payment-details">
+          <h3>PayPal Payment</h3>
+          <p><strong>Email:</strong> weddingjohnandjane.com</p>
+          <p>Send payment through PayPal using our email address</p>
+          <a href="https://paypal.me/placeholder" target="_blank" class="external-link">Open PayPal</a>
+        </div>
+      }
+
+      @if (selectedPaymentMethod === 'zelle') {
+        <div class="payment-details">
+          <h3>Zelle Payment</h3>
+          <p><strong>Phone:</strong> 555-WEDDING (555-933-3464)</p>
+          <p>Use your bank's app to send money via Zelle to our phone number</p>
+        </div>
+      }
+
+      @if (selectedPaymentMethod === 'cashapp') {
+        <div class="payment-details">
+          <h3>Cash App Payment</h3>
+          <div class="qr-placeholder">
+            <p>💸 QR Code Placeholder</p>
+            <p>Scan to pay via Cash App</p>
+          </div>
+          <p><strong>Username:</strong> $JohnJaneWedding</p>
+          <p>Open Cash App and send to our $cashtag above</p>
+        </div>
+      }
+
+      @if (selectedPaymentMethod === 'traditional') {
+        <div class="payment-details">
+          <h3>Traditional Gift</h3>
+          <p>You can bring a card with cash or check to our wedding reception.</p>
+          <p><strong>Make checks payable to:</strong> John & Jane Smith</p>
+          <p>There will be a card box at the reception for your convenience.</p>
+        </div>
+      }
+
+      @if (selectedPaymentMethod === 'registry') {
+        <div class="payment-details">
+          <h3>Wedding Registry</h3>
+          <p>Visit our registries to choose from items we've selected:</p>
+          <div class="registry-links">
+            <a href="#" target="_blank" class="external-link">Target Registry</a>
+            <a href="#" target="_blank" class="external-link">Amazon Registry</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

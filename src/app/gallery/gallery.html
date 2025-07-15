@@ -39,17 +39,18 @@
 <section class="photo-gallery">
   <div class="container">
     <div class="gallery-grid">
-      <div 
-        *ngFor="let photo of filteredPhotos" 
-        class="gallery-item"
-        (click)="openLightbox(photo)">
-        <div class="photo-placeholder" [attr.data-category]="photo.category">
-          <div class="photo-overlay">
-            <h4>{{ photo.title }}</h4>
-            <p>{{ photo.description }}</p>
+      @for (photo of filteredPhotos; track photo.id) {
+        <div 
+          class="gallery-item"
+          (click)="openLightbox(photo)">
+          <div class="photo-placeholder" [attr.data-category]="photo.category">
+            <div class="photo-overlay">
+              <h4>{{ photo.title }}</h4>
+              <p>{{ photo.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>
   </div>
 </section>
@@ -73,14 +74,16 @@
 </section>
 
 <!-- Lightbox Modal -->
-<div class="lightbox" *ngIf="selectedPhoto" (click)="closeLightbox()">
-  <div class="lightbox-content" (click)="$event.stopPropagation()">
-    <button class="close-btn" (click)="closeLightbox()">&times;</button>
-    <div class="lightbox-photo" [attr.data-category]="selectedPhoto.category"></div>
-    <div class="lightbox-info">
-      <h3>{{ selectedPhoto.title }}</h3>
-      <p>{{ selectedPhoto.description }}</p>
-      <span class="photo-date">{{ selectedPhoto.date }}</span>
+@if (selectedPhoto) {
+  <div class="lightbox" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeLightbox()">&times;</button>
+      <div class="lightbox-photo" [attr.data-category]="selectedPhoto.category"></div>
+      <div class="lightbox-info">
+        <h3>{{ selectedPhoto.title }}</h3>
+        <p>{{ selectedPhoto.description }}</p>
+        <span class="photo-date">{{ selectedPhoto.date }}</span>
+      </div>
     </div>
   </div>
-</div>
+}
