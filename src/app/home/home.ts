@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {weddingDate} from "../constants/constants";
 
 interface TimeRemaining {
   days: number;
@@ -14,8 +15,9 @@ interface TimeRemaining {
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
+
 export class Home implements OnInit, OnDestroy {
-  weddingDate = new Date('2025-08-15T15:00:00'); // 3 PM wedding time
+  weddingDate = weddingDate();
   private intervalId?: number;
   
   timeRemaining: TimeRemaining = {
