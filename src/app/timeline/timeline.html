@@ -1,0 +1,35 @@
+<section class="timeline-hero">
+  <div class="container">
+    <h1>Wedding Day Timeline</h1>
+    <p class="subtitle">October 26th, 2025 • Beautiful Garden Venue</p>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="timeline-container">
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      
+      <div class="timeline-event" *ngFor="let event of timelineEvents; let i = index">
+        <div class="timeline-marker">
+          <div class="timeline-icon">
+            {{ event.icon }}
+          </div>
+        </div>
+        
+        <div class="timeline-content" [class.timeline-content-right]="i % 2 === 1">
+          <div class="timeline-card">
+            <div class="timeline-time">{{ event.time }}</div>
+            <h3 class="timeline-title">{{ event.title }}</h3>
+            <p class="timeline-description">{{ event.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-note">
+      <p><strong>Note:</strong> Times are approximate and may vary slightly. Please arrive by 2:00 PM to ensure you don't miss the ceremony!</p>
+    </div>
+  </div>
+</section>

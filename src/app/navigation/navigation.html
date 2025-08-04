@@ -1,14 +1,22 @@
 <nav class="navbar">
   <div class="nav-content">
     <div class="nav-brand">
-      <a routerLink="/">Our Wedding</a>
+      <a routerLink="/" (click)="closeMenu()">Our Wedding</a>
     </div>
-    <div class="nav-links">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a routerLink="/about" routerLinkActive="active">About</a>
-      <a routerLink="/gallery" routerLinkActive="active">Gallery</a>
-      <a routerLink="/contributions" routerLinkActive="active">Contributions</a>
-      <a routerLink="/rsvp" routerLinkActive="active">RSVP</a>
+    
+    <button class="mobile-menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <div class="nav-links" [class.nav-links-open]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+      <a routerLink="/timeline" routerLinkActive="active" (click)="closeMenu()">Timeline</a>
+      <a routerLink="/gallery" routerLinkActive="active" (click)="closeMenu()">Gallery</a>
+      <a routerLink="/contributions" routerLinkActive="active" (click)="closeMenu()">Contributions</a>
+      <a routerLink="/rsvp" routerLinkActive="active" (click)="closeMenu()">RSVP</a>
     </div>
   </div>
 </nav>
