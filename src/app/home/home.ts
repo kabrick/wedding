@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {weddingDate} from "../constants/constants";
 
 interface TimeRemaining {
@@ -11,7 +12,7 @@ interface TimeRemaining {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -19,6 +20,7 @@ interface TimeRemaining {
 export class Home implements OnInit, OnDestroy {
   weddingDate = weddingDate();
   private intervalId?: number;
+  hasBackgroundImage = false;
   
   timeRemaining: TimeRemaining = {
     days: 0,
@@ -29,10 +31,22 @@ export class Home implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateCountdown();
+    this.checkBackgroundImage();
     // Update every second
     this.intervalId = window.setInterval(() => {
       this.updateCountdown();
     }, 1000);
+  }
+
+  private checkBackgroundImage(): void {
+    const img = new Image();
+    img.onload = () => {
+      this.hasBackgroundImage = true;
+    };
+    img.onerror = () => {
+      this.hasBackgroundImage = false;
+    };
+    img.src = '/images/couple-hero.png';
   }
 
   ngOnDestroy(): void {

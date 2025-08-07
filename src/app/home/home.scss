@@ -1,6 +1,6 @@
 .hero {
-  background: linear-gradient(rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.05)), 
-              linear-gradient(135deg, var(--cream) 0%, #f5f1e8 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+              url('/images/couple-hero.png') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -15,8 +15,20 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><defs><pattern id="grain" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.5" fill="%23d4af37" opacity="0.03"/><circle cx="15" cy="45" r="0.3" fill="%23d4af37" opacity="0.02"/><circle cx="45" cy="15" r="0.4" fill="%23d4af37" opacity="0.03"/></pattern></defs><rect width="60" height="60" fill="url(%23grain)"/></svg>');
+  background: linear-gradient(135deg, 
+              rgba(212, 175, 55, 0.15) 0%, 
+              rgba(184, 148, 31, 0.1) 50%, 
+              rgba(212, 175, 55, 0.15) 100%);
   pointer-events: none;
+}
+
+.hero.no-image {
+  background: linear-gradient(rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.05)), 
+              linear-gradient(135deg, var(--cream) 0%, #f5f1e8 100%);
+}
+
+.hero.no-image::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><defs><pattern id="grain" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="0.5" fill="%23d4af37" opacity="0.03"/><circle cx="15" cy="45" r="0.3" fill="%23d4af37" opacity="0.02"/><circle cx="45" cy="15" r="0.4" fill="%23d4af37" opacity="0.03"/></pattern></defs><rect width="60" height="60" fill="url(%23grain)"/></svg>');
 }
 
 .hero-container {
@@ -46,11 +58,11 @@
 
 .couple-names {
   font-size: 5.5rem;
-  color: var(--primary-gold);
+  color: var(--white);
   margin-bottom: 2rem;
   font-family: var(--font-elegant), var(--font-script), cursive;
   font-weight: 400;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px rgba(212, 175, 55, 0.3);
   line-height: 1.1;
   letter-spacing: 2px;
 }
@@ -61,29 +73,33 @@
 
 .quote-text {
   font-size: 1.4rem;
-  color: var(--dark-text);
+  color: var(--white);
   font-family: var(--font-body), serif;
   font-style: italic;
   line-height: 1.6;
   margin-bottom: 1rem;
-  opacity: 0.9;
+  opacity: 0.95;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .quote-author {
   font-size: 1rem;
-  color: var(--light-text);
+  color: var(--white);
   font-family: var(--font-serif), serif;
   font-weight: 500;
   letter-spacing: 1px;
+  opacity: 0.85;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 /* Right Side - Wedding Details (37.5% width) */
 .hero-right {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 3rem 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .wedding-info {
@@ -195,6 +211,31 @@
   background: var(--secondary-gold);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Fallback styles for when image doesn't load */
+.hero.no-image .couple-names {
+  color: var(--primary-gold);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero.no-image .quote-text {
+  color: var(--dark-text);
+  text-shadow: none;
+  opacity: 0.9;
+}
+
+.hero.no-image .quote-author {
+  color: var(--light-text);
+  text-shadow: none;
+  opacity: 1;
+}
+
+.hero.no-image .hero-right {
+  background: var(--white);
+  backdrop-filter: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 @media (max-width: 1200px) {
