@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './contributions.html',
   styleUrl: './contributions.scss'
 })
+
 export class Contributions {
   selectedPaymentMethod: string | null = null;
 

@@ -1,11 +1,16 @@
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
-              url('/images/couple-hero.png') center/cover no-repeat;
+              linear-gradient(135deg, var(--cream) 0%, #f5f1e8 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
+}
+
+.hero.has-image {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+              url('/images/couple-hero.png') center/cover no-repeat;
 }
 
 .hero::before {
