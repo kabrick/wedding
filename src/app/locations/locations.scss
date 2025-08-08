@@ -217,16 +217,16 @@
     padding: 40px 15px;
   }
   
-  .location-content {
+  .location-content,
+  .location-content.reverse {
     grid-template-columns: 1fr;
   }
   
-  .location-content.reverse .location-info {
-    order: 1;
-  }
-  
+  .location-content .location-info,
+  .location-content .location-map,
+  .location-content.reverse .location-info,
   .location-content.reverse .location-map {
-    order: 2;
+    order: unset;
   }
   
   .location-info {
