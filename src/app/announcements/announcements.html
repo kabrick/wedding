@@ -1,0 +1,76 @@
+<section class="announcements-hero">
+    <div class="container">
+        <h1>Wedding Updates</h1>
+        <p class="subtitle">Stay up to date with the latest wedding announcements and important information</p>
+    </div>
+</section>
+
+<section class="announcements-section">
+    <div class="container">
+
+        <!-- Important Announcements -->
+        <div class="announcements-grid">
+            @for (announcement of featuredAnnouncements(); track announcement.id) {
+                <div class="announcement-item featured">
+                    <div class="announcement-header">
+                        <div class="announcement-badge featured">{{ announcement.type }}</div>
+                        <span class="announcement-date">{{ announcement.date }}</span>
+                    </div>
+                    <h2>{{ announcement.title }}</h2>
+                    <p class="announcement-content">{{ announcement.content }}</p>
+                    @if (announcement.actionText && announcement.actionUrl) {
+                        <div class="announcement-actions">
+                            <a [href]="announcement.actionUrl" class="btn btn-primary" target="_blank">
+                                {{ announcement.actionText }}
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Regular Announcements -->
+            @for (announcement of regularAnnouncements(); track announcement.id) {
+                <div class="announcement-item">
+                    <div class="announcement-header">
+                        <div class="announcement-badge" [class]="announcement.type.toLowerCase()">{{ announcement.type }}</div>
+                        <span class="announcement-date">{{ announcement.date }}</span>
+                    </div>
+                    <h3>{{ announcement.title }}</h3>
+                    <p class="announcement-content">{{ announcement.content }}</p>
+                    @if (announcement.actionText && announcement.actionUrl) {
+                        <div class="announcement-actions">
+                            <a [href]="announcement.actionUrl" class="btn btn-outline" target="_blank">
+                                {{ announcement.actionText }}
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Emergency Contact Information -->
+        <div class="emergency-contact">
+            <h3>Need to reach us?</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h4>Day of Wedding</h4>
+                    <p>Wedding Coordinator</p>
+                    <a href="tel:+1234567890" class="contact-link">(123) 456-7890</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>General Questions</h4>
+                    <p>Couple Direct</p>
+                    <a href="mailto:mitch.douglas@wedding.com" class="contact-link">mitch.douglaswedding.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">❓</div>
+                    <h4>Quick Updates</h4>
+                    <p>Check back here regularly</p>
+                    <span class="last-updated">Last updated: {{ lastUpdated }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
