@@ -295,6 +295,38 @@
   font-style: italic;
 }
 
+.save-the-date {
+  background: var(--cream);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.save-the-date h2 {
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+}
+
+.save-the-date p {
+  font-size: 1.2rem;
+  color: var(--light-text);
+  margin-bottom: 2rem;
+}
+
+.calendar-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.calendar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
 @media (max-width: 768px) {
   .about-hero h1 {
     font-size: 2.5rem;
@@ -347,5 +379,10 @@
   
   .timeline-title {
     font-size: 1.2rem;
+  }
+
+  .calendar-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
