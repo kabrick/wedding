@@ -1,0 +1,27 @@
+@if (pwaService.showPrompt()) {
+  <div class="pwa-prompt-overlay" (click)="onOverlayClick($event)">
+    <div class="pwa-prompt-card" (click)="$event.stopPropagation()">
+      <div class="pwa-prompt-header">
+        <div class="pwa-icon">💍</div>
+        <button class="close-btn" (click)="dismiss()" aria-label="Close">×</button>
+      </div>
+      
+      <div class="pwa-prompt-content">
+        <h3>Add to Home Screen</h3>
+        <p>Get quick access to our wedding info! Add this app to your home screen for:</p>
+        
+        <ul class="benefits-list">
+          <li>📱 Quick access to wedding updates</li>
+          <li>📍 Easy venue directions</li>
+          <li>📅 Timeline reminders</li>
+          <li>📸 Photo sharing</li>
+        </ul>
+      </div>
+      
+      <div class="pwa-prompt-actions">
+        <button class="btn btn-outline" (click)="dismiss()">Maybe Later</button>
+        <button class="btn btn-primary" (click)="install()">Add to Home</button>
+      </div>
+    </div>
+  </div>
+}
