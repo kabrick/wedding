@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384" width="384" height="384">
-  <!-- Ring band -->
-  <circle cx="192" cy="192" r="144" fill="none" stroke="#d4af37" stroke-width="30"/>
-  <circle cx="192" cy="192" r="108" fill="none" stroke="#e6c758" stroke-width="15"/>
-  
-  <!-- Diamond/gem on top -->
-  <polygon points="192,48 216,96 192,144 168,96" fill="#ffffff" stroke="#d4af37" stroke-width="8"/>
-  <polygon points="192,48 216,96 192,120 168,96" fill="#f0f8ff"/>
-  
-  <!-- Sparkles -->
-  <circle cx="96" cy="144" r="9.6" fill="#d4af37"/>
-  <circle cx="288" cy="240" r="9.6" fill="#d4af37"/>
-  <circle cx="144" cy="312" r="7.2" fill="#e6c758"/>
-  <circle cx="264" cy="96" r="7.2" fill="#e6c758"/>
+    <!-- Ring band -->
+    <circle cx="192" cy="192" r="144" fill="none" stroke="#d4af37" stroke-width="30"/>
+    <circle cx="192" cy="192" r="108" fill="none" stroke="#e6c758" stroke-width="15"/>
+
+    <!-- Diamond/gem on top -->
+    <polygon points="192,48 216,96 192,144 168,96" fill="#ffffff" stroke="#d4af37" stroke-width="8"/>
+    <polygon points="192,48 216,96 192,120 168,96" fill="#f0f8ff"/>
+
+    <!-- Sparkles -->
+    <circle cx="96" cy="144" r="9.6" fill="#d4af37"/>
+    <circle cx="288" cy="240" r="9.6" fill="#d4af37"/>
+    <circle cx="144" cy="312" r="7.2" fill="#e6c758"/>
+    <circle cx="264" cy="96" r="7.2" fill="#e6c758"/>
 </svg>
