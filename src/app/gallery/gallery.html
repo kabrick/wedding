@@ -1,0 +1,117 @@
+<section class="gallery-hero">
+  <div class="container">
+    <h1>Our Story in Pictures</h1>
+    <p class="subtitle">Moments from our journey together and our beautiful wedding day</p>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    
+    <!-- Category Filter -->
+    <div class="category-filters">
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'all'"
+        (click)="setCategory('all')">
+        All Photos
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'engagement'"
+        (click)="setCategory('engagement')">
+        Engagement
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'ceremony'"
+        (click)="setCategory('ceremony')">
+        Ceremony
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'reception'"
+        (click)="setCategory('reception')">
+        Reception
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'travel'"
+        (click)="setCategory('travel')">
+        Travel & Adventures
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="activeCategory() === 'couple'"
+        (click)="setCategory('couple')">
+        Just Us Two
+      </button>
+    </div>
+
+    <!-- Photo Grid -->
+    <div class="photo-grid">
+      @for (photo of filteredPhotos(); track photo.id) {
+        <div class="photo-item" (click)="openLightbox(photo)">
+          <div class="photo-container">
+            <img 
+              [src]="photo.thumbnail" 
+              [alt]="photo.caption"
+              loading="lazy"
+            />
+            <div class="photo-overlay">
+              <div class="photo-info">
+                <span class="photo-category">{{ photo.category | titlecase }}</span>
+                <p class="photo-caption">{{ photo.caption }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Empty State -->
+    @if (filteredPhotos().length === 0) {
+      <div class="empty-state">
+        <div class="empty-icon">📸</div>
+        <h3>No photos yet</h3>
+        <p>Photos for this category will be added soon!</p>
+      </div>
+    }
+
+    <!-- Photo Upload Section -->
+    <div class="photo-upload">
+      <h3>Share Your Photos</h3>
+      <p>Help us build our wedding gallery! Upload your favorite moments from our special day.</p>
+      <button class="btn btn-primary" (click)="showUploadModal()">
+        📤 Upload Photos
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+@if (lightboxPhoto()) {
+  <div class="lightbox-overlay" (click)="closeLightbox()" (keydown.escape)="closeLightbox()">
+    <div class="lightbox-container" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close">×</button>
+      
+      <button class="lightbox-nav prev" (click)="previousPhoto()" *ngIf="hasPreviousPhoto()" aria-label="Previous">‹</button>
+      <button class="lightbox-nav next" (click)="nextPhoto()" *ngIf="hasNextPhoto()" aria-label="Next">›</button>
+      
+      <div class="lightbox-content">
+        <img 
+          [src]="lightboxPhoto()!.fullSize" 
+          [alt]="lightboxPhoto()!.caption"
+          class="lightbox-image"
+        />
+        <div class="lightbox-info">
+          <span class="lightbox-category">{{ lightboxPhoto()!.category | titlecase }}</span>
+          <h4>{{ lightboxPhoto()!.caption }}</h4>
+          @if (lightboxPhoto()!.date) {
+            <span class="lightbox-date">{{ lightboxPhoto()!.date }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

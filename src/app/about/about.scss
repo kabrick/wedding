@@ -135,6 +135,143 @@
   font-style: italic;
 }
 
+.locations-section {
+  padding: 80px 20px;
+  background: var(--white);
+}
+
+.location-item {
+  margin-bottom: 80px;
+  background: var(--cream);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+}
+
+.location-content.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.location-content.reverse .location-info {
+  order: 2;
+}
+
+.location-content.reverse .location-map {
+  order: 1;
+}
+
+.location-info {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.location-badge.ceremony {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.location-badge.reception {
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.location-info h2 {
+  font-size: 2.2rem;
+  color: var(--dark-text);
+  margin-bottom: 25px;
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+}
+
+.location-details {
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 12px;
+}
+
+.detail-item .icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.detail-item .text {
+  color: var(--dark-text);
+  font-family: var(--font-body), serif;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.location-actions {
+  margin-top: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  font-family: var(--font-body), serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary-gold);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+  background: var(--secondary-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.location-map {
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-map iframe {
+  border-radius: 0;
+}
+
 .journey-timeline {
   padding: 6rem 2rem;
   background: var(--white);
@@ -330,6 +467,30 @@
 @media (max-width: 768px) {
   .about-hero h1 {
     font-size: 2.5rem;
+  }
+
+  .locations-section {
+    padding: 40px 15px;
+  }
+
+  .location-content,
+  .location-content.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .location-content .location-info,
+  .location-content .location-map,
+  .location-content.reverse .location-info,
+  .location-content.reverse .location-map {
+    order: unset;
+  }
+
+  .location-info {
+    padding: 30px 25px;
+  }
+
+  .location-info h2 {
+    font-size: 1.8rem;
   }
   
   .subtitle {

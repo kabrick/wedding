@@ -83,94 +83,80 @@
   </div>
 </section>
 
-<section class="journey-timeline">
-  <div class="container">
-    <h2>Our Journey Together</h2>
-    
-    <div class="timeline">
-      <div class="timeline-line"></div>
-      
-      <div class="timeline-event">
-        <div class="timeline-marker">
-          <div class="timeline-icon">💕</div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-card">
-            <div class="timeline-image">
-              <img src="images/journey/first-met.jpg" alt="Our first meeting at the coffee shop" />
+<section class="locations-section">
+    <div class="container">
+        <!-- Church/Ceremony Location -->
+        <div class="location-item">
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="location-badge ceremony">{{ churchLocation.description }}</div>
+                    <h2>{{ churchLocation.name }}</h2>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <span class="icon">📍</span>
+                            <span class="text">{{ churchLocation.address }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">🕐</span>
+                            <span class="text">{{ churchLocation.time }}</span>
+                        </div>
+                    </div>
+                    <div class="location-actions">
+                        <a [href]="'https://www.google.com/maps?q=' + churchLocation.address"
+                           target="_blank"
+                           class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <iframe
+                            [src]="churchLocation.mapUrl"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
-            <div class="timeline-time">2019</div>
-            <h3 class="timeline-title">First Met</h3>
-            <p class="timeline-description">Coffee shop conversation that lasted hours</p>
-          </div>
         </div>
-      </div>
 
-      <div class="timeline-event">
-        <div class="timeline-marker">
-          <div class="timeline-icon">❤️</div>
-        </div>
-        <div class="timeline-content timeline-content-right">
-          <div class="timeline-card">
-            <div class="timeline-image">
-              <img src="images/journey/first-love.jpg" alt="Our romantic picnic in Central Park" />
+        <!-- Reception Location -->
+        <div class="location-item">
+            <div class="location-content reverse">
+                <div class="location-info">
+                    <div class="location-badge reception">{{ receptionLocation.description }}</div>
+                    <h2>{{ receptionLocation.name }}</h2>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <span class="icon">📍</span>
+                            <span class="text">{{ receptionLocation.address }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">🕐</span>
+                            <span class="text">{{ receptionLocation.time }}</span>
+                        </div>
+                    </div>
+                    <div class="location-actions">
+                        <a [href]="'https://www.google.com/maps?q=' + receptionLocation.address"
+                           target="_blank"
+                           class="btn btn-primary">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <iframe
+                            [src]="receptionLocation.mapUrl"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
-            <div class="timeline-time">2020</div>
-            <h3 class="timeline-title">First "I Love You"</h3>
-            <p class="timeline-description">During a sunset picnic in Central Park</p>
-          </div>
         </div>
-      </div>
-
-      <div class="timeline-event">
-        <div class="timeline-marker">
-          <div class="timeline-icon">🏠</div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-card">
-            <div class="timeline-image">
-              <img src="images/journey/moved-in.jpg" alt="Moving into our first apartment together" />
-            </div>
-            <div class="timeline-time">2022</div>
-            <h3 class="timeline-title">Moved In Together</h3>
-            <p class="timeline-description">Found our perfect little apartment downtown</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-event">
-        <div class="timeline-marker">
-          <div class="timeline-icon">💍</div>
-        </div>
-        <div class="timeline-content timeline-content-right">
-          <div class="timeline-card">
-            <div class="timeline-image">
-              <img src="images/journey/proposal.jpg" alt="The magical proposal moment" />
-            </div>
-            <div class="timeline-time">2024</div>
-            <h3 class="timeline-title">The Proposal</h3>
-            <p class="timeline-description">He finally popped the question!</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-event">
-        <div class="timeline-marker">
-          <div class="timeline-icon">🎉</div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-card">
-            <div class="timeline-image">
-              <img src="images/journey/wedding-day.jpg" alt="Our upcoming wedding celebration" />
-            </div>
-            <div class="timeline-time">2025</div>
-            <h3 class="timeline-title">Our Wedding Day</h3>
-            <p class="timeline-description">Celebrating with all our loved ones</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section class="save-the-date">
