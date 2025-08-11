@@ -21,7 +21,7 @@ export class PwaPromptService {
       e.preventDefault();
       this.deferredPrompt = e;
       this.canInstall.set(true);
-      
+
       // Show prompt after a delay if not already shown
       setTimeout(() => {
         if (!this.hasPromptBeenDismissed()) {
@@ -49,18 +49,18 @@ export class PwaPromptService {
 
   private isRunningStandalone(): boolean {
     return window.matchMedia('(display-mode: standalone)').matches ||
-           (window.navigator as any).standalone ||
-           document.referrer.includes('android-app://');
+        (window.navigator as any).standalone ||
+        document.referrer.includes('android-app://');
   }
 
   private hasPromptBeenDismissed(): boolean {
     const dismissedTime = localStorage.getItem('pwa-prompt-dismissed');
     if (!dismissedTime) return false;
-    
+
     const dismissedDate = new Date(dismissedTime);
     const now = new Date();
     const daysSinceDismissed = Math.floor((now.getTime() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24));
-    
+
     // Show again after 7 days
     return daysSinceDismissed < 7;
   }
@@ -70,13 +70,13 @@ export class PwaPromptService {
 
     this.deferredPrompt.prompt();
     const { outcome } = await this.deferredPrompt.userChoice;
-    
+
     if (outcome === 'accepted') {
       localStorage.setItem('pwa-installed', 'true');
     } else {
       this.dismissPrompt();
     }
-    
+
     this.deferredPrompt = null;
     this.isPromptShown.set(false);
   }
