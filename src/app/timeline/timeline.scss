@@ -28,6 +28,59 @@
   background: var(--white);
 }
 
+.filter-controls {
+  text-align: center;
+  margin-bottom: 60px;
+  
+  h2 {
+    font-size: 2rem;
+    color: var(--dark-brown);
+    margin-bottom: 30px;
+    font-family: var(--font-script), cursive;
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+  &:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+    border-color: var(--primary-gold);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+  }
+}
+
+.filter-icon {
+  font-size: 1.2rem;
+}
+
 .timeline-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -44,7 +97,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(to bottom, #3498db, #e74c3c);
+  background: linear-gradient(to bottom, #8e44ad, #e67e22, #e74c3c);
   transform: translateX(-50%);
   z-index: 1;
 }
@@ -75,6 +128,17 @@
   justify-content: center;
   font-size: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.ceremony-marker .timeline-icon {
+  border-color: #8e44ad;
+  background: linear-gradient(135deg, #f8f4ff, white);
+}
+
+.reception-marker .timeline-icon {
+  border-color: #e67e22;
+  background: linear-gradient(135deg, #fff8f4, white);
 }
 
 .timeline-content {
@@ -93,11 +157,36 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   border-left: 4px solid #3498db;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   }
+}
+
+.ceremony-card {
+  border-left-color: #8e44ad;
+  background: linear-gradient(135deg, #f8f4ff 0%, white 100%);
+}
+
+.reception-card {
+  border-left-color: #e67e22;
+  background: linear-gradient(135deg, #fff8f4 0%, white 100%);
+}
+
+.timeline-category {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: rgba(0,0,0,0.1);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .timeline-time {
@@ -147,6 +236,21 @@
     padding: 40px 15px;
   }
   
+  .filter-controls h2 {
+    font-size: 1.5rem;
+  }
+  
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .filter-btn {
+    width: 200px;
+    justify-content: center;
+  }
+  
   .timeline-line {
     left: 30px;
   }
@@ -177,5 +281,11 @@
   
   .timeline-title {
     font-size: 1.2rem;
+  }
+  
+  .timeline-category {
+    position: static;
+    display: inline-block;
+    margin-top: 10px;
   }
 }

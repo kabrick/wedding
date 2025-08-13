@@ -1,35 +1,69 @@
 <section class="timeline-hero">
   <div class="container">
     <h1>Wedding Day Timeline</h1>
-    <p class="subtitle">October 26th, 2025 • Beautiful Garden Venue</p>
+    <p class="subtitle">October 26th, 2025 • Church Ceremony & Reception</p>
   </div>
 </section>
 
 <section class="timeline-section">
   <div class="timeline-container">
+    
+    <div class="filter-controls">
+      <div class="filter-buttons">
+        <button 
+          class="filter-btn" 
+          [class.active]="selectedFilter === 'all'"
+          (click)="setFilter('all')">
+          <span class="filter-icon">🌟</span>
+          Full Day
+        </button>
+        <button 
+          class="filter-btn" 
+          [class.active]="selectedFilter === 'ceremony'"
+          (click)="setFilter('ceremony')">
+          <span class="filter-icon">⛪</span>
+          Church Ceremony Only
+        </button>
+        <button 
+          class="filter-btn" 
+          [class.active]="selectedFilter === 'reception'"
+          (click)="setFilter('reception')">
+          <span class="filter-icon">🎉</span>
+          Reception Only
+        </button>
+      </div>
+    </div>
 
     <div class="timeline">
       <div class="timeline-line"></div>
       
-      <div class="timeline-event" *ngFor="let event of timelineEvents; let i = index">
-        <div class="timeline-marker">
+      <div class="timeline-event" 
+           *ngFor="let event of timelineEvents; let i = index"
+           [attr.data-category]="event.category">
+        <div class="timeline-marker" [class.ceremony-marker]="event.category === 'ceremony'" [class.reception-marker]="event.category === 'reception'">
           <div class="timeline-icon">
             {{ event.icon }}
           </div>
         </div>
         
         <div class="timeline-content" [class.timeline-content-right]="i % 2 === 1">
-          <div class="timeline-card">
+          <div class="timeline-card" [class.ceremony-card]="event.category === 'ceremony'" [class.reception-card]="event.category === 'reception'">
             <div class="timeline-time">{{ event.time }}</div>
             <h3 class="timeline-title">{{ event.title }}</h3>
             <p class="timeline-description">{{ event.description }}</p>
+            <div class="timeline-category" *ngIf="selectedFilter === 'all'">
+              {{ event.category === 'ceremony' ? 'Church Ceremony' : 'Reception' }}
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="timeline-note">
-      <p><strong>Note:</strong> Times are approximate and may vary slightly. Please arrive by 2:00 PM to ensure you don't miss the ceremony!</p>
+      <p><strong>Note:</strong> Times are approximate and may vary slightly. 
+        <span *ngIf="selectedFilter === 'all' || selectedFilter === 'ceremony'">Please arrive by 2:00 PM for the ceremony!</span>
+        <span *ngIf="selectedFilter === 'reception'">Reception location details will be provided after the ceremony.</span>
+      </p>
     </div>
   </div>
 </section>
