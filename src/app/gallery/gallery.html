@@ -95,8 +95,12 @@
     <div class="lightbox-container" (click)="$event.stopPropagation()">
       <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close">×</button>
       
-      <button class="lightbox-nav prev" (click)="previousPhoto()" *ngIf="hasPreviousPhoto()" aria-label="Previous">‹</button>
-      <button class="lightbox-nav next" (click)="nextPhoto()" *ngIf="hasNextPhoto()" aria-label="Next">›</button>
+      @if (hasPreviousPhoto()) {
+        <button class="lightbox-nav prev" (click)="previousPhoto()" aria-label="Previous">‹</button>
+      }
+      @if (hasNextPhoto()) {
+        <button class="lightbox-nav next" (click)="nextPhoto()" aria-label="Next">›</button>
+      }
       
       <div class="lightbox-content">
         <img 

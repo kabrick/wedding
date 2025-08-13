@@ -31,7 +31,7 @@
 .filter-controls {
   text-align: center;
   margin-bottom: 60px;
-  
+
   h2 {
     font-size: 2rem;
     color: var(--dark-brown);
@@ -61,13 +61,13 @@
   font-weight: 500;
   color: #666;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  
+
   &:hover {
     border-color: var(--primary-gold);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   }
-  
+
   &.active {
     background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
     border-color: var(--primary-gold);
@@ -131,7 +131,7 @@
   transition: all 0.3s ease;
 }
 
-.ceremony-marker .timeline-icon {
+.church-marker .timeline-icon {
   border-color: #8e44ad;
   background: linear-gradient(135deg, #f8f4ff, white);
 }
@@ -158,14 +158,14 @@
   border-left: 4px solid #3498db;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   }
 }
 
-.ceremony-card {
+.church-card {
   border-left-color: #8e44ad;
   background: linear-gradient(135deg, #f8f4ff 0%, white 100%);
 }
@@ -216,7 +216,7 @@
   padding: 20px;
   margin-top: 40px;
   text-align: center;
-  
+
   p {
     margin: 0;
     color: #856404;
@@ -227,62 +227,62 @@
   .timeline-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1.1rem;
   }
-  
+
   .timeline-section {
     padding: 40px 15px;
   }
-  
+
   .filter-controls h2 {
     font-size: 1.5rem;
   }
-  
+
   .filter-buttons {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
-  
+
   .filter-btn {
     width: 200px;
     justify-content: center;
   }
-  
+
   .timeline-line {
     left: 30px;
   }
-  
+
   .timeline-marker {
     left: 30px;
   }
-  
+
   .timeline-icon {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
   }
-  
+
   .timeline-content {
     width: calc(100% - 80px);
     margin-left: 80px;
     padding: 0;
   }
-  
+
   .timeline-content-right {
     margin-left: 80px;
   }
-  
+
   .timeline-card {
     padding: 20px;
   }
-  
+
   .timeline-title {
     font-size: 1.2rem;
   }
-  
+
   .timeline-category {
     position: static;
     display: inline-block;
