@@ -1,15 +1,38 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contributions',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contributions.html',
   styleUrl: './contributions.scss'
 })
 
 export class Contributions {
   selectedPaymentMethod: string | null = null;
+  showPledgeModal = false;
+  showMessageModal = false;
+  
+  // Pledge form data
+  pledgeForm = {
+    name: '',
+    email: '',
+    item: '',
+    amount: '',
+    message: ''
+  };
+  
+  // Message form data
+  messageForm = {
+    name: '',
+    email: '',
+    message: ''
+  };
+  
+  // Submitted pledges and messages (in real app, this would come from a service)
+  submittedPledges: any[] = [];
+  submittedMessages: any[] = [];
 
   openPaymentMethod(method: string): void {
     this.selectedPaymentMethod = method;
@@ -17,5 +40,69 @@ export class Contributions {
 
   closeModal(): void {
     this.selectedPaymentMethod = null;
+  }
+  
+  openPledgeModal(): void {
+    this.showPledgeModal = true;
+  }
+  
+  closePledgeModal(): void {
+    this.showPledgeModal = false;
+    this.resetPledgeForm();
+  }
+  
+  openMessageModal(): void {
+    this.showMessageModal = true;
+  }
+  
+  closeMessageModal(): void {
+    this.showMessageModal = false;
+    this.resetMessageForm();
+  }
+  
+  submitPledge(): void {
+    if (this.pledgeForm.name && this.pledgeForm.email && this.pledgeForm.item) {
+      const pledge = {
+        ...this.pledgeForm,
+        id: Date.now(),
+        date: new Date().toLocaleDateString()
+      };
+      this.submittedPledges.push(pledge);
+      this.closePledgeModal();
+      // In real app: send to backend service
+      alert('Thank you for your pledge! We\'ll be in touch with more details.');
+    }
+  }
+  
+  submitMessage(): void {
+    if (this.messageForm.name && this.messageForm.message) {
+      const message = {
+        ...this.messageForm,
+        id: Date.now(),
+        date: new Date().toLocaleDateString()
+      };
+      this.submittedMessages.push(message);
+      this.closeMessageModal();
+      // In real app: send to backend service
+      alert('Thank you for your beautiful message!');
+    }
+  }
+  
+  private resetPledgeForm(): void {
+    this.pledgeForm = {
+      name: '',
+      email: '',
+      item: '',
+      amount: '',
+      message: ''
+    };
+  }
+  
+  private resetMessageForm(): void {
+    this.messageForm = {
+      name: '',
+      email: '',
+      message: ''
+    };
   }
 }
