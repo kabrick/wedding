@@ -15,29 +15,29 @@ export class About {
   constructor(private sanitizer: DomSanitizer) {
     // Initialize locations in constructor after sanitizer is available
     this.churchLocation = {
-      name: 'St. Mary\'s Cathedral',
-      address: '123 Cathedral Street, City, State 12345',
-      time: '3:00 PM',
+      name: 'Bunga SDA Central Church',
+      address: 'Gaba Road Off Soya Stage, Kampala',
+      time: '10:00 AM',
       description: 'Wedding Ceremony',
-      mapUrl: this.getSafeUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.5273!2d-74.0060!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjEiTiA3NMKwMDAnMjEuNiJX!5e0!3m2!1sen!2sus!4v1234567890')
+      mapUrl: this.getSafeUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2622.5316300372397!2d32.61672854925081!3d0.2779481470714677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbdf6872ccff1%3A0x292e85d5291c9df0!2sBunga%20SDA%20Central%20Church!5e0!3m2!1sen!2sug!4v1756263341664!5m2!1sen!2sug')
     };
 
     this.receptionLocation = {
-      name: 'Beautiful Garden Venue',
-      address: '456 Garden Lane, City, State 12345',
-      time: '5:00 PM',
+      name: 'Silver Springs Hotel',
+      address: 'Port Bell Road, Bugolobi Kampala,',
+      time: '2:30 PM',
       description: 'Wedding Reception',
-      mapUrl: this.getSafeUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.5273!2d-74.0050!3d40.7118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQwLjEiTiA3NMKwMDAnMTguNiJX!5e0!3m2!1sen!2sus!4v1234567891')
+      mapUrl: this.getSafeUrl('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7569247357637!2d32.627040799999996!3d0.31785589999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbfe390edf3d%3A0xc3bcaf50aa421559!2sSilver%20Springs%20Hotel%2C%20Bugolobi!5e0!3m2!1sen!2sug!4v1756263779987!5m2!1sen!2sug')
     };
   }
 
   addToCalendar(type: string): void {
     const eventDetails = {
-      title: 'John & Jane Wedding',
-      start: '20250815T150000Z',
-      end: '20250815T230000Z',
+      title: 'Michwe & Douglas\' Wedding',
+      start: '20251026T100000Z',
+      end: '20251026T200000Z',
       description: 'Join us for our wedding celebration!',
-      location: 'Beautiful Garden Venue, City'
+      location: 'Silver Springs Bugolobi, Kampala'
     };
 
     let url = '';

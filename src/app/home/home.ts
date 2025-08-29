@@ -46,7 +46,7 @@ export class Home implements OnInit, OnDestroy {
     img.onerror = () => {
       this.hasBackgroundImage = false;
     };
-    img.src = '/images/couple-hero.png';
+    img.src = '/images/couple-hero.webp';
   }
 
   ngOnDestroy(): void {

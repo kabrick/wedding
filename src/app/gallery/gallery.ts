@@ -3,14 +3,14 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
 
 interface Photo {
   id: number;
-  category: 'engagement' | 'ceremony' | 'reception' | 'travel' | 'couple';
+  category: 'visitation' | 'ceremony' | 'reception' | 'introduction' | 'couple';
   caption: string;
   thumbnail: string;
   fullSize: string;
   date?: string;
 }
 
-type CategoryFilter = 'all' | 'engagement' | 'ceremony' | 'reception' | 'travel' | 'couple';
+type CategoryFilter = 'all' | 'visitation' | 'ceremony' | 'reception' | 'introduction' | 'couple';
 
 @Component({
   selector: 'app-gallery',
@@ -24,10 +24,10 @@ export class Gallery {
   protected currentPhotoIndex = 0;
 
   protected readonly photos = signal<Photo[]>([
-    // Engagement Photos
+    // visitation Photos
     {
       id: 1,
-      category: 'engagement',
+      category: 'visitation',
       caption: 'The moment he proposed on the beach at sunset',
       thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop',
       fullSize: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
@@ -35,7 +35,7 @@ export class Gallery {
     },
     {
       id: 2,
-      category: 'engagement',
+      category: 'visitation',
       caption: 'Our engagement celebration with champagne',
       thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop',
       fullSize: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=800&fit=crop',
@@ -43,7 +43,7 @@ export class Gallery {
     },
     {
       id: 3,
-      category: 'engagement',
+      category: 'visitation',
       caption: 'Showing off the perfect ring',
       thumbnail: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop',
       fullSize: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=800&fit=crop',
@@ -105,7 +105,7 @@ export class Gallery {
     // Travel & Adventures
     {
       id: 10,
-      category: 'travel',
+      category: 'introduction',
       caption: 'Exploring Paris during our honeymoon',
       thumbnail: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=400&h=400&fit=crop',
       fullSize: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=1200&h=800&fit=crop',
@@ -113,7 +113,7 @@ export class Gallery {
     },
     {
       id: 11,
-      category: 'travel',
+      category: 'introduction',
       caption: 'Romantic dinner in Rome',
       thumbnail: 'https://images.unsplash.com/photo-1555992336-03a23c87b9da?w=400&h=400&fit=crop',
       fullSize: 'https://images.unsplash.com/photo-1555992336-03a23c87b9da?w=1200&h=800&fit=crop',
