@@ -11,7 +11,14 @@
       <h2>We Hope You Can Join Us!</h2>
       <p>Your presence would make our wedding day complete. Please respond by July 1st, 2025.</p>
       
-      <form class="rsvp-form" (ngSubmit)="onSubmit()" #rsvpForm="ngForm">
+      <form class="rsvp-form" (ngSubmit)="onSubmit()" #rsvpForm="ngForm" 
+            name="wedding-rsvp" 
+            method="POST" 
+            data-netlify="true"
+            [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+        <!-- Hidden field for Netlify -->
+        <input type="hidden" name="form-name" value="wedding-rsvp">
+        
         <!-- Guest Information -->
         <div class="form-group">
           <label for="guestName">Your Name *</label>
@@ -26,7 +33,7 @@
         </div>
 
         <div class="form-group">
-          <label for="email">Email Address *</label>
+          <label for="email">Email Address</label>
           <input 
             type="email" 
             id="email" 
@@ -45,7 +52,7 @@
             name="phone"
             [(ngModel)]="formData.phone" 
             class="form-control"
-            placeholder="(555) 123-4567">
+            placeholder="0700123456">
         </div>
 
         <!-- Attendance -->
@@ -109,35 +116,6 @@
           </div>
         }
 
-        <!-- Dietary Restrictions -->
-        @if (formData.attending === 'yes') {
-          <div class="form-group">
-            <label for="dietaryRestrictions">Dietary Restrictions or Food Allergies</label>
-            <textarea 
-              id="dietaryRestrictions" 
-              name="dietaryRestrictions"
-              [(ngModel)]="formData.dietaryRestrictions" 
-              class="form-control"
-              rows="3"
-              placeholder="Please let us know about any dietary restrictions, allergies, or special meal requests">
-            </textarea>
-          </div>
-        }
-
-        <!-- Song Request -->
-        @if (formData.attending === 'yes') {
-          <div class="form-group">
-            <label for="songRequest">Song Request 🎵</label>
-            <input 
-              type="text" 
-              id="songRequest" 
-              name="songRequest"
-              [(ngModel)]="formData.songRequest" 
-              class="form-control"
-              placeholder="Any song you'd love to hear at our reception?">
-          </div>
-        }
-
         <!-- Special Message -->
         <div class="form-group">
           <label for="message">Special Message for the Happy Couple 💕</label>
@@ -174,48 +152,6 @@
           </div>
         }
       </form>
-    </div>
-  </div>
-</section>
-
-<section class="wedding-details">
-  <div class="container">
-    <h2>Wedding Details</h2>
-    <div class="details-grid">
-      <div class="detail-card">
-        <div class="detail-icon">📅</div>
-        <h3>When</h3>
-        <p>Sunday, October 26th, 2025</p>
-        <p>Ceremony: 3:00 PM</p>
-        <p>Reception: 5:00 PM</p>
-      </div>
-      
-      <div class="detail-card">
-        <div class="detail-icon">📍</div>
-        <h3>Where</h3>
-        <p>Beautiful Garden Venue</p>
-        <p>123 Wedding Lane</p>
-        <p>City, State 12345</p>
-        <a href="https://maps.google.com" target="_blank" class="map-link">View on Map</a>
-      </div>
-      
-      <div class="detail-card">
-        <div class="detail-icon">👗</div>
-        <h3>Dress Code</h3>
-        <p>Cocktail Attire</p>
-        <p>We suggest garden party elegant - think florals, pastels, and comfortable shoes for outdoor festivities.</p>
-      </div>
-      
-      <div class="detail-card">
-        <div class="detail-icon">🎁</div>
-        <h3>Registry</h3>
-        <p>Your presence is the greatest gift!</p>
-        <p>If you'd like to celebrate with a gift, we're registered at:</p>
-        <div class="registry-links">
-          <a href="#" class="registry-link">Target</a>
-          <a href="#" class="registry-link">Amazon</a>
-        </div>
-      </div>
     </div>
   </div>
 </section>
