@@ -7,70 +7,99 @@
 
 <section class="timeline-section">
     <div class="timeline-container">
-
-        <div class="filter-controls">
-            <div class="filter-buttons">
-                <button
-                        class="filter-btn"
-                        [class.active]="selectedFilter === 'all'"
-                        (click)="setFilter('all')">
-                    <span class="filter-icon">🌟</span>
-                    Full Day
-                </button>
-                <button
-                        class="filter-btn"
-                        [class.active]="selectedFilter === 'church'"
-                        (click)="setFilter('church')">
-                    <span class="filter-icon">⛪</span>
-                    Church Ceremony Only
-                </button>
-                <button
-                        class="filter-btn"
-                        [class.active]="selectedFilter === 'reception'"
-                        (click)="setFilter('reception')">
-                    <span class="filter-icon">🎉</span>
-                    Reception Only
-                </button>
+        
+        @if (programAvailable) {
+            <div class="filter-controls">
+                <div class="filter-buttons">
+                    <button
+                            class="filter-btn"
+                            [class.active]="selectedFilter === 'all'"
+                            (click)="setFilter('all')">
+                        <span class="filter-icon">🌟</span>
+                        Full Day
+                    </button>
+                    <button
+                            class="filter-btn"
+                            [class.active]="selectedFilter === 'church'"
+                            (click)="setFilter('church')">
+                        <span class="filter-icon">⛪</span>
+                        Church Ceremony Only
+                    </button>
+                    <button
+                            class="filter-btn"
+                            [class.active]="selectedFilter === 'reception'"
+                            (click)="setFilter('reception')">
+                        <span class="filter-icon">🎉</span>
+                        Reception Only
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <div class="timeline">
-            <div class="timeline-line"></div>
+            <div class="timeline">
+                <div class="timeline-line"></div>
 
-            @for (event of timelineEvents; track event.time; let i = $index) {
-                <div class="timeline-event"
-                     [attr.data-category]="event.category">
-                    <div class="timeline-marker" [class.church-marker]="event.category === 'church'" [class.reception-marker]="event.category === 'reception'">
-                        <div class="timeline-icon">
-                            {{ event.icon }}
+                @for (event of timelineEvents; track event.time; let i = $index) {
+                    <div class="timeline-event"
+                         [attr.data-category]="event.category">
+                        <div class="timeline-marker" [class.church-marker]="event.category === 'church'" [class.reception-marker]="event.category === 'reception'">
+                            <div class="timeline-icon">
+                                {{ event.icon }}
+                            </div>
+                        </div>
+
+                        <div class="timeline-content" [class.timeline-content-right]="i % 2 === 1">
+                            <div class="timeline-card" [class.church-card]="event.category === 'church'" [class.reception-card]="event.category === 'reception'">
+                                <div class="timeline-time">{{ event.time }}</div>
+                                <h3 class="timeline-title">{{ event.title }}</h3>
+                                <p class="timeline-description">{{ event.description }}</p>
+                                @if (selectedFilter === 'all') {
+                                    <div class="timeline-category">
+                                        {{ event.category === 'church' ? 'Church Ceremony' : 'Reception' }}
+                                    </div>
+                                }
+                            </div>
                         </div>
                     </div>
+                }
+            </div>
 
-                    <div class="timeline-content" [class.timeline-content-right]="i % 2 === 1">
-                        <div class="timeline-card" [class.church-card]="event.category === 'church'" [class.reception-card]="event.category === 'reception'">
-                            <div class="timeline-time">{{ event.time }}</div>
-                            <h3 class="timeline-title">{{ event.title }}</h3>
-                            <p class="timeline-description">{{ event.description }}</p>
-                            @if (selectedFilter === 'all') {
-                                <div class="timeline-category">
-                                    {{ event.category === 'church' ? 'Church Ceremony' : 'Reception' }}
-                                </div>
-                            }
-                        </div>
+            <div class="timeline-note">
+                <p><strong>Note:</strong> Times are approximate and may vary slightly.
+                    @if (selectedFilter === 'all' || selectedFilter === 'church') {
+                        <span>Please arrive by 2:00 PM for the church ceremony!</span>
+                    }
+                    @if (selectedFilter === 'reception') {
+                        <span>Please arrive by 2:00 PM for the reception!</span>
+                    }
+                </p>
+            </div>
+        } @else {
+            <div class="program-unavailable">
+                <div class="unavailable-icon">
+                    ⏰
+                </div>
+                <h2>Wedding Program Coming Soon</h2>
+                <p>We're still finalizing the details of our special day! The complete wedding timeline will be available closer to the date.</p>
+                <div class="basic-info">
+                    <div class="info-item">
+                        <span class="info-icon">📅</span>
+                        <span class="info-text">October 26th, 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⛪</span>
+                        <span class="info-text">Church Ceremony</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🎉</span>
+                        <span class="info-text">Reception to Follow</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span class="info-text">Silver Springs Hotel, Bugolobi</span>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="timeline-note">
-            <p><strong>Note:</strong> Times are approximate and may vary slightly.
-                @if (selectedFilter === 'all' || selectedFilter === 'church') {
-                    <span>Please arrive by 2:00 PM for the church ceremony!</span>
-                }
-                @if (selectedFilter === 'reception') {
-                    <span>Please arrive by 2:00 PM for the reception!</span>
-                }
-            </p>
-        </div>
+                <p class="update-message">Please check back soon for the detailed schedule, or feel free to <a routerLink="/rsvp">RSVP</a> in the meantime!</p>
+            </div>
+        }
     </div>
 </section>

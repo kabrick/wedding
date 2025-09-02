@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class Timeline {
+  programAvailable: boolean = false;
   selectedFilter: 'all' | 'church' | 'reception' = 'all';
 
   churchEvents = [
