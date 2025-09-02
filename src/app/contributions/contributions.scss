@@ -112,6 +112,14 @@
   background: linear-gradient(135deg, #00d632, #00a32e);
 }
 
+.payment-icon.mobile_money {
+  background: linear-gradient(135deg, #ffa500, #ff8c00);
+}
+
+.payment-icon.banks {
+  background: linear-gradient(135deg, #2c5aa0, #1a4b8c);
+}
+
 .payment-icon.traditional {
   background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
 }
@@ -332,6 +340,188 @@
   color: var(--dark-text);
   line-height: 1.6;
   font-family: var(--font-body), serif;
+}
+
+/* Mobile Money and Bank Options Cards */
+.mobile-money-options,
+.bank-options {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.money-option-card,
+.bank-option-card {
+  background: var(--white);
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.money-option-card:hover,
+.bank-option-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-gold);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.money-option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #ffa500, #ff8c00);
+}
+
+.bank-option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #2c5aa0, #1a4b8c);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.provider-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.money-option-card .provider-icon {
+  background: linear-gradient(135deg, #ffa500, #ff8c00);
+}
+
+.bank-option-card .provider-icon {
+  background: linear-gradient(135deg, #2c5aa0, #1a4b8c);
+}
+
+.card-header h4 {
+  font-size: 1.3rem;
+  color: var(--dark-text);
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item .label {
+  font-weight: 600;
+  color: var(--light-text);
+  font-family: var(--font-body), serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-item .value {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-family: var(--font-body), serif;
+  font-size: 1rem;
+  text-align: right;
+  background: var(--cream);
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+.payment-instructions {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+
+.payment-instructions h4 {
+  font-size: 1.2rem;
+  color: var(--primary-gold);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-serif), serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.payment-instructions ol {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 0;
+}
+
+.payment-instructions li {
+  counter-increment: step-counter;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem 0.8rem 3rem;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  font-family: var(--font-body), serif;
+  color: var(--dark-text);
+  line-height: 1.5;
+}
+
+.payment-instructions li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-gold);
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.payment-instructions li:last-child {
+  margin-bottom: 0;
 }
 
 .qr-placeholder {
@@ -706,11 +896,61 @@
   .modal-content {
     padding: 2rem;
     margin: 1rem;
+    max-width: 95vw;
   }
   
   .registry-links {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .money-option-card,
+  .bank-option-card {
+    padding: 1rem;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .card-header h4 {
+    font-size: 1.1rem;
+  }
+  
+  .provider-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .detail-item .value {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .payment-instructions {
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  .payment-instructions li {
+    padding: 0.6rem 0.8rem 0.6rem 2.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .payment-instructions li::before {
+    left: 0.8rem;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
   }
 }
 

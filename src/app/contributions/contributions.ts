@@ -13,23 +13,22 @@ export class Contributions {
   selectedPaymentMethod: string | null = null;
   showPledgeModal = false;
   showMessageModal = false;
-  
+
   // Pledge form data
   pledgeForm = {
     name: '',
-    email: '',
-    item: '',
+      phone: '',
     amount: '',
     message: ''
   };
-  
+
   // Message form data
   messageForm = {
     name: '',
-    email: '',
+    phone: '',
     message: ''
   };
-  
+
   // Submitted pledges and messages (in real app, this would come from a service)
   submittedPledges: any[] = [];
   submittedMessages: any[] = [];
@@ -41,27 +40,27 @@ export class Contributions {
   closeModal(): void {
     this.selectedPaymentMethod = null;
   }
-  
+
   openPledgeModal(): void {
     this.showPledgeModal = true;
   }
-  
+
   closePledgeModal(): void {
     this.showPledgeModal = false;
     this.resetPledgeForm();
   }
-  
+
   openMessageModal(): void {
     this.showMessageModal = true;
   }
-  
+
   closeMessageModal(): void {
     this.showMessageModal = false;
     this.resetMessageForm();
   }
-  
+
   submitPledge(): void {
-    if (this.pledgeForm.name && this.pledgeForm.email && this.pledgeForm.item) {
+    if (this.pledgeForm.name && this.pledgeForm.phone && this.pledgeForm.amount) {
       const pledge = {
         ...this.pledgeForm,
         id: Date.now(),
@@ -73,7 +72,7 @@ export class Contributions {
       alert('Thank you for your pledge! We\'ll be in touch with more details.');
     }
   }
-  
+
   submitMessage(): void {
     if (this.messageForm.name && this.messageForm.message) {
       const message = {
@@ -87,21 +86,20 @@ export class Contributions {
       alert('Thank you for your beautiful message!');
     }
   }
-  
+
   private resetPledgeForm(): void {
     this.pledgeForm = {
       name: '',
-      email: '',
-      item: '',
+      phone: '',
       amount: '',
       message: ''
     };
   }
-  
+
   private resetMessageForm(): void {
     this.messageForm = {
       name: '',
-      email: '',
+      phone: '',
       message: ''
     };
   }

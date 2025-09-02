@@ -68,11 +68,7 @@
                     <span class="icon">🎁</span>
                 </div>
                 <h3>Traditional Gift</h3>
-                <p class="payment-username">Bring to wedding day</p>
-                <p class="payment-description">Cash or gift at the reception</p>
-                <button class="payment-btn traditional-btn" (click)="openPaymentMethod('traditional')">
-                    Learn More
-                </button>
+                <p class="payment-username">Bring your gift to the reception</p>
             </div>
 
             <div class="payment-card">
@@ -157,31 +153,147 @@
 
             @if (selectedPaymentMethod === 'mobile_money') {
                 <div class="payment-details">
-                    <h3>Venmo Payment</h3>
-                    <div class="qr-placeholder">
-                        <p>📱 QR Code Placeholder</p>
-                        <p>Scan to pay via Venmo</p>
+                    <h3>Mobile Money Payment</h3>
+                    <p>You can send your contribution using any of the following mobile money services:</p>
+                    
+                    <div class="mobile-money-options">
+                        <div class="money-option-card">
+                            <div class="card-header">
+                                <div class="provider-icon">📱</div>
+                                <h4>MTN Mobile Money</h4>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="label">Name:</span>
+                                    <span class="value">Michwe Gift Muhangi</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Number:</span>
+                                    <span class="value">0786836689</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Reference:</span>
+                                    <span class="value">Wedding Contribution</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="money-option-card">
+                            <div class="card-header">
+                                <div class="provider-icon">📱</div>
+                                <h4>MTN Mobile Money</h4>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="label">Name:</span>
+                                    <span class="value">Kabuye Douglas Hosea</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Number:</span>
+                                    <span class="value">0770806782</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Reference:</span>
+                                    <span class="value">Wedding Contribution</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="money-option-card">
+                            <div class="card-header">
+                                <div class="provider-icon">📱</div>
+                                <h4>Airtel Money</h4>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="label">Name:</span>
+                                    <span class="value">Kabuye Douglas Hosea</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Number:</span>
+                                    <span class="value">0700138651</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Reference:</span>
+                                    <span class="value">Wedding Contribution</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p><strong>Username:</strong> john-jane-wedding</p>
-                    <p>Open your Venmo app and send payment to our username above</p>
+                    
+                    <div class="payment-instructions">
+                        <h4>How to send:</h4>
+                        <ol>
+                            <li>Dial the mobile money code (*165# for MTN or *185# for Airtel)</li>
+                            <li>Select "Send Money"</li>
+                            <li>Enter the recipient number above</li>
+                            <li>Enter your contribution amount</li>
+                            <li>Add "Wedding Contribution" as reference</li>
+                            <li>Complete the transaction</li>
+                        </ol>
+                    </div>
                 </div>
             }
 
             @if (selectedPaymentMethod === 'banks') {
                 <div class="payment-details">
-                    <h3>PayPal Payment</h3>
-                    <p><strong>Email:</strong> weddingjohnandjane.com</p>
-                    <p>Send payment through PayPal using our email address</p>
-                    <a href="https://paypal.me/placeholder" target="_blank" class="external-link">Open PayPal</a>
-                </div>
-            }
-
-            @if (selectedPaymentMethod === 'traditional') {
-                <div class="payment-details">
-                    <h3>Traditional Gift</h3>
-                    <p>You can bring a card with cash or check to our wedding reception.</p>
-                    <p><strong>Make checks payable to:</strong> John & Jane Smith</p>
-                    <p>There will be a card box at the reception for your convenience.</p>
+                    <h3>Bank Transfer Payment</h3>
+                    <p>You can transfer your contribution directly to any of the following bank accounts:</p>
+                    
+                    <div class="bank-options">
+                        <div class="bank-option-card">
+                            <div class="card-header">
+                                <div class="provider-icon">🏦</div>
+                                <h4>Absa Bank</h4>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="label">Account Name:</span>
+                                    <span class="value">Kabuye Douglas Hosea</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">6008201534</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Branch:</span>
+                                    <span class="value">Ntinda Branch</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bank-option-card">
+                            <div class="card-header">
+                                <div class="provider-icon">🏦</div>
+                                <h4>Equity Bank</h4>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="label">Account Name:</span>
+                                    <span class="value">Kabuye Douglas Hosea</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">1031100896069</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Branch:</span>
+                                    <span class="value">Ntinda Branch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-instructions">
+                        <h4>How to transfer:</h4>
+                        <ol>
+                            <li>Visit any branch of the above banks or use online/mobile banking</li>
+                            <li>Use the account details provided above</li>
+                            <li>Include "Wedding Contribution" in the transaction reference</li>
+                            <li>Keep your transaction receipt for reference</li>
+                            <li>Send us a message with your contribution details (optional)</li>
+                        </ol>
+                    </div>
                 </div>
             }
         </div>
@@ -213,37 +325,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pledgeEmail">Email Address *</label>
+                    <label for="pledgePhone">Phone Number *</label>
                     <input
-                            type="email"
-                            id="pledgeEmail"
-                            [(ngModel)]="pledgeForm.email"
-                            name="pledgeEmail"
+                            type="text"
+                            id="pledgePhone"
+                            [(ngModel)]="pledgeForm.phone"
+                            name="pledgePhone"
                             required
-                            placeholder="your.email@example.com"
+                            placeholder="0700******"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="pledgeItem">Item/Service to Pledge *</label>
+                    <label for="pledgeAmount">Pledge Amount *</label>
                     <input
-                            type="text"
-                            id="pledgeItem"
-                            [(ngModel)]="pledgeForm.item"
-                            name="pledgeItem"
-                            required
-                            placeholder="What would you like to pledge for?"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="pledgeAmount">Pledge Amount (Optional)</label>
-                    <input
-                            type="text"
+                            type="number"
                             id="pledgeAmount"
                             [(ngModel)]="pledgeForm.amount"
                             name="pledgeAmount"
-                            placeholder="e.g., $100 or 'Full amount'"
+                            required
                     >
                 </div>
 
@@ -296,13 +396,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="messageEmail">Email Address (Optional)</label>
+                    <label for="messagePhone">Phone Number (Optional)</label>
                     <input
-                            type="email"
-                            id="messageEmail"
-                            [(ngModel)]="messageForm.email"
-                            name="messageEmail"
-                            placeholder="your.email@example.com"
+                            type="text"
+                            id="messagePhone"
+                            [(ngModel)]="messageForm.phone"
+                            name="messagePhone"
+                            placeholder="0700******"
                     >
                 </div>
 
