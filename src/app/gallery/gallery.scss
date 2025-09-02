@@ -161,32 +161,6 @@
   font-family: var(--font-body), serif;
 }
 
-.photo-upload {
-  background: var(--white);
-  padding: 50px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.photo-upload h3 {
-  font-size: 2.2rem;
-  color: var(--dark-text);
-  margin-bottom: 15px;
-  font-family: var(--font-serif), serif;
-}
-
-.photo-upload p {
-  color: var(--light-text);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: var(--font-body), serif;
-}
-
 .btn {
   display: inline-block;
   padding: 15px 35px;
@@ -382,10 +356,6 @@
     gap: 20px;
   }
   
-  .photo-upload {
-    padding: 30px 25px;
-  }
-  
   .lightbox-container {
     max-width: 95vw;
     max-height: 95vh;
@@ -433,4 +403,58 @@
     width: 200px;
     text-align: center;
   }
+  
+  .btn-load-more {
+    width: 100%;
+    padding: 15px 30px;
+  }
+}
+
+// Load More Button Styles
+.load-more-section {
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem 0;
+}
+
+.btn-load-more {
+  padding: 15px 40px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-body), serif;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-load-more:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-load-more:active {
+  transform: translateY(-1px);
+}
+
+.btn-load-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-load-more:hover::before {
+  left: 100%;
 }

@@ -1,0 +1,5 @@
+Add church ceremony images here
+Example files:
+- church-1.jpg
+- church-2.jpg
+- church-3.jpg

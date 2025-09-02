@@ -10,42 +10,42 @@
     
     <!-- Category Filter -->
     <div class="category-filters">
+      <button
+                class="filter-btn"
+                [class.active]="activeCategory() === 'kukyala'"
+                (click)="setCategory('kukyala')">
+            Kukyala
+        </button>
+        <button
+                class="filter-btn"
+                [class.active]="activeCategory() === 'engagement'"
+                (click)="setCategory('engagement')">
+            Engagement
+        </button>
       <button 
         class="filter-btn" 
-        [class.active]="activeCategory() === 'all'"
-        (click)="setCategory('all')">
-        All Photos
-      </button>
-      <button 
-        class="filter-btn" 
-        [class.active]="activeCategory() === 'visitation'"
-        (click)="setCategory('visitation')">
-        Engagement
-      </button>
-      <button 
-        class="filter-btn" 
-        [class.active]="activeCategory() === 'ceremony'"
-        (click)="setCategory('ceremony')">
-        Ceremony
-      </button>
-      <button 
-        class="filter-btn" 
-        [class.active]="activeCategory() === 'reception'"
-        (click)="setCategory('reception')">
-        Reception
+        [class.active]="activeCategory() === 'pre_shoot'"
+        (click)="setCategory('pre_shoot')">
+        Pre-Shoot
       </button>
       <button 
         class="filter-btn" 
         [class.active]="activeCategory() === 'introduction'"
         (click)="setCategory('introduction')">
-        Travel & Adventures
+        Introduction
       </button>
-      <button 
-        class="filter-btn" 
-        [class.active]="activeCategory() === 'couple'"
-        (click)="setCategory('couple')">
-        Just Us Two
-      </button>
+        <button
+                class="filter-btn"
+                [class.active]="activeCategory() === 'church'"
+                (click)="setCategory('church')">
+            Ceremony
+        </button>
+        <button
+                class="filter-btn"
+                [class.active]="activeCategory() === 'reception'"
+                (click)="setCategory('reception')">
+            Reception
+        </button>
     </div>
 
     <!-- Photo Grid -->
@@ -55,19 +55,29 @@
           <div class="photo-container">
             <img 
               [src]="photo.thumbnail" 
-              [alt]="photo.caption"
+              [alt]="photo.category"
               loading="lazy"
             />
             <div class="photo-overlay">
               <div class="photo-info">
                 <span class="photo-category">{{ photo.category | titlecase }}</span>
-                <p class="photo-caption">{{ photo.caption }}</p>
               </div>
             </div>
           </div>
         </div>
       }
     </div>
+
+    <!-- Load More Button -->
+    @if (hasMorePhotos(activeCategory())) {
+      <div class="load-more-section">
+        <button 
+          class="btn-load-more" 
+          (click)="loadMorePhotos(activeCategory())">
+          Load More Photos ({{ getRemainingPhotoCount(activeCategory()) }} remaining)
+        </button>
+      </div>
+    }
 
     <!-- Empty State -->
     @if (filteredPhotos().length === 0) {
@@ -77,15 +87,6 @@
         <p>Photos for this category will be added soon!</p>
       </div>
     }
-
-    <!-- Photo Upload Section -->
-    <div class="photo-upload">
-      <h3>Share Your Photos</h3>
-      <p>Help us build our wedding gallery! Upload your favorite moments from our special day.</p>
-      <button class="btn btn-primary" (click)="showUploadModal()">
-        📤 Upload Photos
-      </button>
-    </div>
   </div>
 </section>
 
@@ -105,15 +106,11 @@
       <div class="lightbox-content">
         <img 
           [src]="lightboxPhoto()!.fullSize" 
-          [alt]="lightboxPhoto()!.caption"
+          [alt]="lightboxPhoto()!.category"
           class="lightbox-image"
         />
         <div class="lightbox-info">
           <span class="lightbox-category">{{ lightboxPhoto()!.category | titlecase }}</span>
-          <h4>{{ lightboxPhoto()!.caption }}</h4>
-          @if (lightboxPhoto()!.date) {
-            <span class="lightbox-date">{{ lightboxPhoto()!.date }}</span>
-          }
         </div>
       </div>
     </div>

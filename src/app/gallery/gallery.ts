@@ -1,16 +1,14 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 
+type Category = 'kukyala' | 'engagement' | 'pre_shoot' | 'introduction' | 'church' | 'reception'
+
 interface Photo {
   id: number;
-  category: 'visitation' | 'ceremony' | 'reception' | 'introduction' | 'couple';
-  caption: string;
+  category: Category;
   thumbnail: string;
   fullSize: string;
-  date?: string;
 }
-
-type CategoryFilter = 'all' | 'visitation' | 'ceremony' | 'reception' | 'introduction' | 'couple';
 
 @Component({
   selector: 'app-gallery',
@@ -18,134 +16,77 @@ type CategoryFilter = 'all' | 'visitation' | 'ceremony' | 'reception' | 'introdu
   templateUrl: './gallery.html',
   styleUrl: './gallery.scss'
 })
+
 export class Gallery {
-  protected readonly activeCategory = signal<CategoryFilter>('all');
+  protected readonly activeCategory = signal<Category>('kukyala');
   protected readonly lightboxPhoto = signal<Photo | null>(null);
   protected currentPhotoIndex = 0;
+  
+  // Track how many photos to show per category (initially 6)
+  private readonly photosPerCategory = signal<Record<Category, number>>({
+    kukyala: 6,
+    engagement: 6,
+    pre_shoot: 6,
+    introduction: 6,
+    church: 6,
+    reception: 6
+  });
 
-  protected readonly photos = signal<Photo[]>([
-    // visitation Photos
-    {
-      id: 1,
-      category: 'visitation',
-      caption: 'The moment he proposed on the beach at sunset',
-      thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
-      date: 'December 2023'
-    },
-    {
-      id: 2,
-      category: 'visitation',
-      caption: 'Our engagement celebration with champagne',
-      thumbnail: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&h=800&fit=crop',
-      date: 'December 2023'
-    },
-    {
-      id: 3,
-      category: 'visitation',
-      caption: 'Showing off the perfect ring',
-      thumbnail: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=800&fit=crop',
-      date: 'December 2023'
-    },
+  // Total available photos per category
+  private readonly totalPhotosPerCategory = {
+    kukyala: 27,
+    engagement: 15,
+    pre_shoot: 6,
+    introduction: 6,
+    church: 6,
+    reception: 6
+  };
 
-    // Ceremony Photos  
-    {
-      id: 4,
-      category: 'ceremony',
-      caption: 'Walking down the aisle with pure joy',
-      thumbnail: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-    {
-      id: 5,
-      category: 'ceremony',
-      caption: 'Exchanging vows under the perfect sky',
-      thumbnail: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-    {
-      id: 6,
-      category: 'ceremony',
-      caption: 'The first kiss as a married couple',
-      thumbnail: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-
-    // Reception Photos
-    {
-      id: 7,
-      category: 'reception',
-      caption: 'Our magical first dance',
-      thumbnail: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-    {
-      id: 8,
-      category: 'reception',
-      caption: 'Cutting the beautiful wedding cake',
-      thumbnail: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-    {
-      id: 9,
-      category: 'reception',
-      caption: 'Dancing the night away with our guests',
-      thumbnail: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=800&fit=crop',
-      date: 'October 26, 2025'
-    },
-
-    // Travel & Adventures
-    {
-      id: 10,
-      category: 'introduction',
-      caption: 'Exploring Paris during our honeymoon',
-      thumbnail: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=1200&h=800&fit=crop',
-      date: 'November 2025'
-    },
-    {
-      id: 11,
-      category: 'introduction',
-      caption: 'Romantic dinner in Rome',
-      thumbnail: 'https://images.unsplash.com/photo-1555992336-03a23c87b9da?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1555992336-03a23c87b9da?w=1200&h=800&fit=crop',
-      date: 'November 2025'
-    },
-
-    // Just Us Two
-    {
-      id: 12,
-      category: 'couple',
-      caption: 'Cozy morning coffee together',
-      thumbnail: 'https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1520637836862-4d197d17c90a?w=1200&h=800&fit=crop'
-    },
-    {
-      id: 13,
-      category: 'couple',
-      caption: 'Sunset walk on our favorite trail',
-      thumbnail: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=400&fit=crop',
-      fullSize: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&h=800&fit=crop'
+  // Generate photo names for a given category
+  generatePhotoNames(category: Category, numberOfPhotos: number): Photo[] {
+    const photos: Photo[] = [];
+    
+    for (let i = 1; i <= numberOfPhotos; i++) {
+      photos.push({
+        id: Date.now() + i, // Generate unique ID
+        category: category,
+        thumbnail: `/images/${category}/${category}${i}.webp`,
+        fullSize: `/images/${category}/${category}${i}.webp`
+      });
     }
+    
+    return photos;
+  }
+
+  // Generate all available photos
+  private readonly allPhotos = signal<Photo[]>([
+    ...this.generatePhotoNames('kukyala', this.totalPhotosPerCategory.kukyala),
+    ...this.generatePhotoNames('engagement', this.totalPhotosPerCategory.engagement),
   ]);
+
+  // Computed signal that returns limited photos based on photosPerCategory
+  protected readonly photos = computed(() => {
+    const allPhotos = this.allPhotos();
+    const limits = this.photosPerCategory();
+    
+    const limitedPhotos: Photo[] = [];
+    
+    Object.entries(limits).forEach(([category, limit]) => {
+      const categoryPhotos = allPhotos
+        .filter(photo => photo.category === category)
+        .slice(0, limit);
+      limitedPhotos.push(...categoryPhotos);
+    });
+    
+    return limitedPhotos;
+  });
 
   protected readonly filteredPhotos = computed(() => {
     const category = this.activeCategory();
-    if (category === 'all') {
-      return this.photos();
-    }
     return this.photos().filter(photo => photo.category === category);
   });
 
-  setCategory(category: CategoryFilter): void {
+  setCategory(category: Category): void {
     this.activeCategory.set(category);
   }
 
@@ -184,7 +125,32 @@ export class Gallery {
     return this.currentPhotoIndex < this.filteredPhotos().length - 1;
   }
 
-  showUploadModal(): void {
-    alert('Photo upload feature coming soon! For now, please email your photos to mitch.douglas@wedding.com');
+  // Load more photos for a specific category
+  loadMorePhotos(category: Category): void {
+    const currentLimits = this.photosPerCategory();
+    const currentLimit = currentLimits[category];
+    const totalAvailable = this.totalPhotosPerCategory[category];
+    
+    if (currentLimit < totalAvailable) {
+      const newLimit = Math.min(currentLimit + 6, totalAvailable);
+      this.photosPerCategory.set({
+        ...currentLimits,
+        [category]: newLimit
+      });
+    }
+  }
+
+  // Check if more photos are available for a category
+  hasMorePhotos(category: Category): boolean {
+    const currentLimit = this.photosPerCategory()[category];
+    const totalAvailable = this.totalPhotosPerCategory[category];
+    return currentLimit < totalAvailable;
+  }
+
+  // Get remaining photo count for a category
+  getRemainingPhotoCount(category: Category): number {
+    const currentLimit = this.photosPerCategory()[category];
+    const totalAvailable = this.totalPhotosPerCategory[category];
+    return Math.max(0, totalAvailable - currentLimit);
   }
 }
