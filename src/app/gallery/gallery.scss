@@ -131,12 +131,6 @@
   margin-bottom: 5px;
 }
 
-.photo-caption {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  margin: 0;
-  font-family: var(--font-body), serif;
-}
 
 .empty-state {
   text-align: center;
@@ -306,12 +300,6 @@
   font-family: var(--font-serif), serif;
 }
 
-.lightbox-date {
-  font-size: 0.9rem;
-  color: var(--light-text);
-  font-style: italic;
-  font-family: var(--font-body), serif;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; }

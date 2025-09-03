@@ -96,21 +96,6 @@
   font-size: 2rem;
 }
 
-.payment-icon.venmo {
-  background: linear-gradient(135deg, #3d95ce, #1a73e8);
-}
-
-.payment-icon.paypal {
-  background: linear-gradient(135deg, #0070ba, #003087);
-}
-
-.payment-icon.zelle {
-  background: linear-gradient(135deg, #6d1ed4, #a855f7);
-}
-
-.payment-icon.cashapp {
-  background: linear-gradient(135deg, #00d632, #00a32e);
-}
 
 .payment-icon.mobile_money {
   background: linear-gradient(135deg, #ffa500, #ff8c00);
@@ -124,9 +109,6 @@
   background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
 }
 
-.payment-icon.registry {
-  background: linear-gradient(135deg, #e11d48, #dc2626);
-}
 
 .payment-icon .icon {
   color: white;
@@ -542,124 +524,7 @@
   margin-bottom: 1rem;
 }
 
-.external-link {
-  display: inline-block;
-  padding: 12px 25px;
-  background: var(--primary-gold);
-  color: var(--white);
-  text-decoration: none;
-  border-radius: 25px;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
 
-.external-link:hover {
-  background: var(--secondary-gold);
-  transform: translateY(-2px);
-}
-
-.registry-links {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Pledge Section */
-.pledge-section {
-  background: var(--white);
-  padding: 6rem 2rem;
-  border-top: 1px solid #f0f0f0;
-}
-
-.pledge-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: var(--dark-text);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-serif), serif;
-}
-
-.pledge-description {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  font-size: 1.1rem;
-  color: var(--dark-text);
-  line-height: 1.7;
-  font-family: var(--font-body), serif;
-}
-
-.pledge-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 4rem;
-}
-
-.pledge-item {
-  background: var(--cream);
-  padding: 2rem 1.5rem;
-  border-radius: 15px;
-  text-align: center;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.pledge-item:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-gold);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
-}
-
-.pledge-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.pledge-item h3 {
-  font-size: 1.2rem;
-  color: var(--dark-text);
-  margin-bottom: 0.5rem;
-  font-family: var(--font-serif), serif;
-  font-weight: 600;
-}
-
-.pledge-cost {
-  font-size: 1rem;
-  color: var(--primary-gold);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-body), serif;
-}
-
-.pledge-btn {
-  padding: 10px 20px;
-  background: var(--primary-gold);
-  color: var(--white);
-  border: none;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: var(--font-body), serif;
-}
-
-.pledge-btn:hover {
-  background: var(--secondary-gold);
-  transform: translateY(-2px);
-}
-
-.pledge-action {
-  text-align: center;
-}
 
 .btn-primary {
   padding: 15px 30px;
@@ -703,86 +568,6 @@
   transform: translateY(-2px);
 }
 
-/* Messages Section */
-.messages-section {
-  background: var(--cream);
-  padding: 6rem 2rem;
-}
-
-.messages-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.messages-info h2 {
-  font-size: 2.5rem;
-  color: var(--dark-text);
-  margin-bottom: 1.5rem;
-  font-family: var(--font-serif), serif;
-}
-
-.messages-info p {
-  font-size: 1.1rem;
-  color: var(--dark-text);
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  font-family: var(--font-body), serif;
-}
-
-.messages-display h3 {
-  font-size: 1.8rem;
-  color: var(--primary-gold);
-  margin-bottom: 2rem;
-  font-family: var(--font-serif), serif;
-}
-
-.messages-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-.message-card {
-  background: var(--white);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border-left: 4px solid var(--primary-gold);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.message-text {
-  font-size: 1rem;
-  color: var(--dark-text);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-family: var(--font-body), serif;
-  font-style: italic;
-}
-
-.message-author {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.author-name {
-  font-weight: 600;
-  color: var(--primary-gold);
-  font-family: var(--font-serif), serif;
-}
-
-.message-date {
-  font-size: 0.9rem;
-  color: var(--light-text);
-  font-family: var(--font-body), serif;
-}
 
 /* Modal Styles */
 .modal-overlay {
@@ -899,10 +684,6 @@
     max-width: 95vw;
   }
   
-  .registry-links {
-    flex-direction: column;
-    align-items: center;
-  }
   
   .money-option-card,
   .bank-option-card {
