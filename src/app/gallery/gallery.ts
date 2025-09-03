@@ -50,8 +50,8 @@ export class Gallery {
       photos.push({
         id: Date.now() + i, // Generate unique ID
         category: category,
-        thumbnail: `/images/${category}/${category}${i}.webp`,
-        fullSize: `/images/${category}/${category}${i}.webp`
+        thumbnail: `/images/${category}/thumbs/${category}${i}_thumb.webp`, // Optimized thumbnail
+        fullSize: `/images/${category}/${category}${i}.webp` // Original full size
       });
     }
     
