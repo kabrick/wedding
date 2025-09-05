@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netlify Forms</title>
+</head>
+<body style="display: none;">
+    <!-- This file helps Netlify detect Angular forms for processing -->
+    
+    <!-- RSVP Form -->
+    <form name="wedding-rsvp" data-netlify="true" action="/thank-you" method="POST" hidden>
+        <input type="hidden" name="form-name" value="wedding-rsvp">
+        <input type="text" name="guestName">
+        <input type="email" name="email">
+        <input type="tel" name="phone">
+        <input type="radio" name="attending" value="yes">
+        <input type="radio" name="attending" value="no">
+        <select name="guestCount">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <textarea name="additionalGuests"></textarea>
+        <textarea name="message"></textarea>
+    </form>
+
+    <!-- Wedding Pledge Form -->
+    <form name="wedding-pledge" data-netlify="true" action="/thank-you" method="POST" hidden>
+        <input type="hidden" name="form-name" value="wedding-pledge">
+        <input type="text" name="name">
+        <input type="text" name="phone">
+        <input type="number" name="amount">
+        <textarea name="message"></textarea>
+    </form>
+
+    <!-- Wedding Message Form -->
+    <form name="wedding-message" data-netlify="true" action="/thank-you" method="POST" hidden>
+        <input type="hidden" name="form-name" value="wedding-message">
+        <input type="text" name="name">
+        <input type="text" name="phone">
+        <textarea name="message"></textarea>
+    </form>
+</body>
+</html>

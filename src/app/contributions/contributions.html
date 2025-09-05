@@ -311,14 +311,21 @@
                 <p>Thank you for wanting to contribute to our special day!</p>
             </div>
 
-            <form class="pledge-form" (ngSubmit)="submitPledge()">
+            <form class="pledge-form" (ngSubmit)="submitPledge()" #pledgeFormRef="ngForm"
+                  name="wedding-pledge"
+                  method="POST"
+                  data-netlify="true"
+                  [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+                <!-- Hidden field for Netlify -->
+                <input type="hidden" name="form-name" value="wedding-pledge">
+                
                 <div class="form-group">
                     <label for="pledgeName">Your Name *</label>
                     <input
                             type="text"
                             id="pledgeName"
                             [(ngModel)]="pledgeForm.name"
-                            name="pledgeName"
+                            name="name"
                             required
                             placeholder="Enter your full name"
                     >
@@ -330,7 +337,7 @@
                             type="text"
                             id="pledgePhone"
                             [(ngModel)]="pledgeForm.phone"
-                            name="pledgePhone"
+                            name="phone"
                             required
                             placeholder="0700******"
                     >
@@ -342,7 +349,7 @@
                             type="number"
                             id="pledgeAmount"
                             [(ngModel)]="pledgeForm.amount"
-                            name="pledgeAmount"
+                            name="amount"
                             required
                     >
                 </div>
@@ -352,18 +359,22 @@
                     <textarea
                             id="pledgeMessage"
                             [(ngModel)]="pledgeForm.message"
-                            name="pledgeMessage"
+                            name="message"
                             rows="3"
                             placeholder="Any special message or notes about your pledge..."
                     ></textarea>
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" class="btn-secondary" (click)="closePledgeModal()">
+                    <button type="button" class="btn-secondary" (click)="closePledgeModal()" [disabled]="isSubmitting">
                         Cancel
                     </button>
-                    <button type="submit" class="btn-primary">
-                        Submit Pledge
+                    <button type="submit" class="btn-primary" [disabled]="!pledgeFormRef.form.valid || isSubmitting">
+                        @if (isSubmitting) {
+                          <span>Submitting...</span>
+                        } @else {
+                          <span>Submit Pledge</span>
+                        }
                     </button>
                 </div>
             </form>
@@ -382,14 +393,21 @@
                 <p>Share your love, well wishes, or favorite memories with us!</p>
             </div>
 
-            <form class="message-form" (ngSubmit)="submitMessage()">
+            <form class="message-form" (ngSubmit)="submitMessage()" #messageFormRef="ngForm"
+                  name="wedding-message"
+                  method="POST"
+                  data-netlify="true"
+                  [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+                <!-- Hidden field for Netlify -->
+                <input type="hidden" name="form-name" value="wedding-message">
+                
                 <div class="form-group">
                     <label for="messageName">Your Name *</label>
                     <input
                             type="text"
                             id="messageName"
                             [(ngModel)]="messageForm.name"
-                            name="messageName"
+                            name="name"
                             required
                             placeholder="Enter your full name"
                     >
@@ -401,7 +419,7 @@
                             type="text"
                             id="messagePhone"
                             [(ngModel)]="messageForm.phone"
-                            name="messagePhone"
+                            name="phone"
                             placeholder="0700******"
                     >
                 </div>
@@ -411,7 +429,7 @@
                     <textarea
                             id="messageText"
                             [(ngModel)]="messageForm.message"
-                            name="messageText"
+                            name="message"
                             rows="5"
                             required
                             placeholder="Share your thoughts, well wishes, advice, or favorite memories..."
@@ -419,11 +437,15 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="button" class="btn-secondary" (click)="closeMessageModal()">
+                    <button type="button" class="btn-secondary" (click)="closeMessageModal()" [disabled]="isSubmitting">
                         Cancel
                     </button>
-                    <button type="submit" class="btn-primary">
-                        Send Message
+                    <button type="submit" class="btn-primary" [disabled]="!messageFormRef.form.valid || isSubmitting">
+                        @if (isSubmitting) {
+                          <span>Sending...</span>
+                        } @else {
+                          <span>Send Message</span>
+                        }
                     </button>
                 </div>
             </form>

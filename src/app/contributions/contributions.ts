@@ -13,11 +13,13 @@ export class Contributions {
   selectedPaymentMethod: string | null = null;
   showPledgeModal = false;
   showMessageModal = false;
+  isNetlifySubmission = false;
+  isSubmitting = false;
 
   // Pledge form data
   pledgeForm = {
     name: '',
-      phone: '',
+    phone: '',
     amount: '',
     message: ''
   };
@@ -61,6 +63,16 @@ export class Contributions {
 
   submitPledge(): void {
     if (this.pledgeForm.name && this.pledgeForm.phone && this.pledgeForm.amount) {
+      this.isSubmitting = true;
+      
+      // Check if we should use Netlify submission
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        this.isNetlifySubmission = true;
+        // Let the form submit naturally to Netlify
+        return;
+      }
+      
+      // Development/local submission
       const pledge = {
         ...this.pledgeForm,
         id: Date.now(),
@@ -68,13 +80,23 @@ export class Contributions {
       };
       this.submittedPledges.push(pledge);
       this.closePledgeModal();
-      // In real app: send to backend service
+      this.isSubmitting = false;
       alert('Thank you for your pledge! We\'ll be in touch with more details.');
     }
   }
 
   submitMessage(): void {
     if (this.messageForm.name && this.messageForm.message) {
+      this.isSubmitting = true;
+      
+      // Check if we should use Netlify submission
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        this.isNetlifySubmission = true;
+        // Let the form submit naturally to Netlify
+        return;
+      }
+      
+      // Development/local submission
       const message = {
         ...this.messageForm,
         id: Date.now(),
@@ -82,7 +104,7 @@ export class Contributions {
       };
       this.submittedMessages.push(message);
       this.closeMessageModal();
-      // In real app: send to backend service
+      this.isSubmitting = false;
       alert('Thank you for your beautiful message!');
     }
   }
