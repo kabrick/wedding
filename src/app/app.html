@@ -1,5 +1,9 @@
-<app-navigation></app-navigation>
+@if (isMaintenanceMode) {
+  <app-maintenance></app-maintenance>
+} @else {
+  <app-navigation></app-navigation>
 
-<router-outlet />
+  <router-outlet />
 
-<app-pwa-prompt></app-pwa-prompt>
+  <app-pwa-prompt></app-pwa-prompt>
+}
