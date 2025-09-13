@@ -391,7 +391,8 @@
                 <p>Share your love, well wishes, or favorite memories with us!</p>
             </div>
 
-            <form class="message-form" name="wedding-message"
+            <form class="message-form" #messageFormRef="ngForm"
+                  name="wedding-message"
                   method="POST"
                   data-netlify="true"
                   action="/thank-you">
