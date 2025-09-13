@@ -9,15 +9,13 @@
   <div class="container">
     <div class="rsvp-card">
       <h2>We Hope You Can Join Us!</h2>
-      <p>Your presence would make our wedding day complete. Please respond by July 1st, 2025.</p>
+      <p>Your presence would make our day complete. Please respond by October 19th, 2025.</p>
       
       <form class="rsvp-form" (ngSubmit)="onSubmit()" #rsvpForm="ngForm" 
             name="wedding-rsvp" 
             method="POST" 
             data-netlify="true"
             [attr.action]="isNetlifySubmission ? '/thank-you' : null">
-        <!-- Hidden field for Netlify -->
-        <input type="hidden" name="form-name" value="wedding-rsvp">
         
         <!-- Guest Information -->
         <div class="form-group">

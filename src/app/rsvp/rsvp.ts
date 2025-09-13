@@ -54,7 +54,9 @@ export class Rsvp {
 
   private isNetlifyEnvironment(): boolean {
     // Check if we're in production on Netlify
-    return typeof window !== 'undefined' && 
+      alert(window.location.hostname)
+      alert(typeof window)
+    return typeof window !== 'undefined' &&
            (window.location.hostname.includes('netlify.app') || 
             window.location.hostname !== 'localhost');
   }
