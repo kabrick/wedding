@@ -311,11 +311,11 @@
                 <p>Thank you for wanting to contribute to our special day!</p>
             </div>
 
-            <form class="pledge-form" (ngSubmit)="submitPledge()" #pledgeFormRef="ngForm"
+            <form class="pledge-form" #pledgeFormRef="ngForm"
                   name="wedding-pledge"
                   method="POST"
                   data-netlify="true"
-                  [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+                  action="/thank-you">
                 
                 <div class="form-group">
                     <label for="pledgeName">Your Name *</label>
@@ -391,11 +391,10 @@
                 <p>Share your love, well wishes, or favorite memories with us!</p>
             </div>
 
-            <form class="message-form" (ngSubmit)="submitMessage()" #messageFormRef="ngForm"
-                  name="wedding-message"
+            <form class="message-form" name="wedding-message"
                   method="POST"
                   data-netlify="true"
-                  [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+                  action="/thank-you">
                 
                 <div class="form-group">
                     <label for="messageName">Your Name *</label>

@@ -11,11 +11,10 @@
       <h2>We Hope You Can Join Us!</h2>
       <p>Your presence would make our day complete. Please respond by October 19th, 2025.</p>
       
-      <form class="rsvp-form" (ngSubmit)="onSubmit()" #rsvpForm="ngForm" 
-            name="wedding-rsvp" 
+      <form class="rsvp-form" name="wedding-rsvp"
             method="POST" 
             data-netlify="true"
-            [attr.action]="isNetlifySubmission ? '/thank-you' : null">
+            action="/thank-you">
         
         <!-- Guest Information -->
         <div class="form-group">
