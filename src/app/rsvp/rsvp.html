@@ -13,9 +13,7 @@
       
       <form class="rsvp-form" name="wedding-rsvp"
             #rsvpForm="ngForm"
-            method="POST" 
-            data-netlify="true"
-            action="/thank-you">
+            method="POST" (ngSubmit)="onSubmit()">
         
         <!-- Guest Information -->
         <div class="form-group">

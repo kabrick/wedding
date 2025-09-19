@@ -114,8 +114,12 @@
   color: var(--white);
 }
 
-.party-photo::before {
-  content: "=d";
+.party-photo.girl::before {
+  content: "👠";
+}
+
+.party-photo.boy::before {
+  content: "👞";
 }
 
 .party-member h4 {

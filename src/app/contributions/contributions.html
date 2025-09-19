@@ -57,10 +57,7 @@
                 </div>
                 <h3>Make a Pledge</h3>
                 <p class="payment-username">Want to make a pledge?</p>
-                <p class="payment-description">You can make a pledge to fulfill your contribution later</p>
-                <button class="payment-btn pledge-btn" (click)="openPledgeModal()">
-                    Send in your pledge
-                </button>
+                <p class="payment-description">You can make a pledge by joining the whatsapp group <a href="https://chat.whatsapp.com/K651Q4b5uPWGNMyaxoM1mI">here</a> and adding it to the running list</p>
             </div>
 
             <div class="payment-card">
@@ -69,18 +66,7 @@
                 </div>
                 <h3>Traditional Gift</h3>
                 <p class="payment-username">Bring your gift to the reception</p>
-            </div>
-
-            <div class="payment-card">
-                <div class="payment-icon message">
-                    <span class="icon">💐</span>
-                </div>
-                <h3>Leave Us a Message</h3>
-                <p class="payment-username">Your words mean the world to us!</p>
-                <p class="payment-description">Share your well wishes, favorite memories, or advice for our new journey together. We'll treasure every message</p>
-                <button class="payment-btn message-btn" (click)="openMessageModal()">
-                    Send Message
-                </button>
+                <p class="payment-description">And of course they are traditions for a reason, you can bring a gift to the reception and we will be so glad to receive it</p>
             </div>
         </div>
     </div>
@@ -296,155 +282,6 @@
                     </div>
                 </div>
             }
-        </div>
-    </div>
-}
-
-<!-- Pledge Modal -->
-@if (showPledgeModal) {
-    <div class="modal-overlay" (click)="closePledgeModal()">
-        <div class="modal-content pledge-modal" (click)="$event.stopPropagation()">
-            <button class="close-btn" (click)="closePledgeModal()">&times;</button>
-
-            <div class="modal-header">
-                <h3>Make a Pledge</h3>
-                <p>Thank you for wanting to contribute to our special day!</p>
-            </div>
-
-            <form class="pledge-form" #pledgeFormRef="ngForm"
-                  name="wedding-pledge"
-                  method="POST"
-                  data-netlify="true"
-                  action="/thank-you">
-                
-                <div class="form-group">
-                    <label for="pledgeName">Your Name *</label>
-                    <input
-                            type="text"
-                            id="pledgeName"
-                            [(ngModel)]="pledgeForm.name"
-                            name="name"
-                            required
-                            placeholder="Enter your full name"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="pledgePhone">Phone Number *</label>
-                    <input
-                            type="text"
-                            id="pledgePhone"
-                            [(ngModel)]="pledgeForm.phone"
-                            name="phone"
-                            required
-                            placeholder="0700******"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="pledgeAmount">Pledge Amount *</label>
-                    <input
-                            type="number"
-                            id="pledgeAmount"
-                            [(ngModel)]="pledgeForm.amount"
-                            name="amount"
-                            required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="pledgeMessage">Personal Message (Optional)</label>
-                    <textarea
-                            id="pledgeMessage"
-                            [(ngModel)]="pledgeForm.message"
-                            name="message"
-                            rows="3"
-                            placeholder="Any special message or notes about your pledge..."
-                    ></textarea>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" (click)="closePledgeModal()" [disabled]="isSubmitting">
-                        Cancel
-                    </button>
-                    <button type="submit" class="btn-primary" [disabled]="!pledgeFormRef.form.valid || isSubmitting">
-                        @if (isSubmitting) {
-                          <span>Submitting...</span>
-                        } @else {
-                          <span>Submit Pledge</span>
-                        }
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-}
-
-<!-- Message Modal -->
-@if (showMessageModal) {
-    <div class="modal-overlay" (click)="closeMessageModal()">
-        <div class="modal-content message-modal" (click)="$event.stopPropagation()">
-            <button class="close-btn" (click)="closeMessageModal()">&times;</button>
-
-            <div class="modal-header">
-                <h3>Leave Us a Message</h3>
-                <p>Share your love, well wishes, or favorite memories with us!</p>
-            </div>
-
-            <form class="message-form" #messageFormRef="ngForm"
-                  name="wedding-message"
-                  method="POST"
-                  data-netlify="true"
-                  action="/thank-you">
-                
-                <div class="form-group">
-                    <label for="messageName">Your Name *</label>
-                    <input
-                            type="text"
-                            id="messageName"
-                            [(ngModel)]="messageForm.name"
-                            name="name"
-                            required
-                            placeholder="Enter your full name"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="messagePhone">Phone Number (Optional)</label>
-                    <input
-                            type="text"
-                            id="messagePhone"
-                            [(ngModel)]="messageForm.phone"
-                            name="phone"
-                            placeholder="0700******"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="messageText">Your Message *</label>
-                    <textarea
-                            id="messageText"
-                            [(ngModel)]="messageForm.message"
-                            name="message"
-                            rows="5"
-                            required
-                            placeholder="Share your thoughts, well wishes, advice, or favorite memories..."
-                    ></textarea>
-                </div>
-
-                <div class="form-actions">
-                    <button type="button" class="btn-secondary" (click)="closeMessageModal()" [disabled]="isSubmitting">
-                        Cancel
-                    </button>
-                    <button type="submit" class="btn-primary" [disabled]="!messageFormRef.form.valid || isSubmitting">
-                        @if (isSubmitting) {
-                          <span>Sending...</span>
-                        } @else {
-                          <span>Send Message</span>
-                        }
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 }
